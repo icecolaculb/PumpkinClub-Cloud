@@ -2,6 +2,14 @@
 .container {
   background-color: #F2f2f2;
 }
+
+page {
+  background: #f6f6f6;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
 .userinfo {
   display: flex;
   flex-direction: column;
@@ -9,6 +17,31 @@
   align-items: center;
   background: #f9ee2700;
 }
+
+.userinfo-avatar {
+  width: 250rpx;
+  height: 250rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+  background-size: cover;
+  background-color: white;
+}
+
+.userinfo-avatar:after {
+  border: none;
+}
+
+.userinfo-nickname {
+  font-size: 32rpx;
+  color: #007aff;
+  background-color: white;
+  background-size: cover;
+}
+
+.userinfo-nickname::after {
+  border: none;
+}
+
 .divLine{
  background: #E0E3DA;
  width: 100%;

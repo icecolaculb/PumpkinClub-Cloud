@@ -1,7 +1,16 @@
 <!--miniprogram/pages/MySelf/MySelf.wxml-->
 <view class="container">
-  <view  bindtap="bindViewTap" class="userinfo">
-    <open-data type="userAvatarUrl" ></open-data>
+    <!-- 用户 openid -->
+  <view class="userinfo">
+    <button 
+      open-type="getUserInfo" 
+      bindgetuserinfo="onGetUserInfo"
+      class="userinfo-avatar"
+      style="background-image: url({{avatarUrl}})"
+    ></button>
+    <view>
+      <open-data type="userNickName">用户名</open-data>
+    </view>
   </view>
 
   <!-- 分割线 -->
