@@ -1,0 +1,44 @@
+/* miniprogram/pages/ClubDetail/ClubDetail.wxss */
+.img_ClubDetail{
+  width: 100%;
+  height: 200px;
+}
+
+.view_ClubName{
+  text-align: center;
+  width: 100%;
+  height: 40px;
+}
+.txt_ClubName{
+  font-size: 20pt;
+}
+
+.txt_ClubProfile{
+  font-size: 14pt;
+}
+.txt_Profiles{
+  font-size: 13pt;
+}
+.others{
+  text-align: right;
+}
+.btn_Detail{
+  position: fixed;
+  bottom: 0;
+  width:100%;
+  display: inline-block;
+  height: 2.58823529em;
+  padding: 0 0.6em 0 0.7em;
+  border-left: 1px solid #E5E5E5;
+  line-height: 2.58823529em;
+  vertical-align: middle;
+  font-size: 17px;
+  color: #3CC51F;
+  white-space: nowrap;
+}
+.view_button{
+   width:100%;
+  display: inline-block;
+  height: 2.58823529em;
+  padding: 0 0.6em 0 0.7em;
+}

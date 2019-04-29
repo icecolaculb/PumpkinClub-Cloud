@@ -1,0 +1,43 @@
+<!--miniprogram/pages/Application/Application.wxml-->
+<view class='contain'>
+  <view class='photo'>
+      <view>
+          <image class='url' mode="{{item.mode}}" src="{{src}}" bindtap="gotoShow"></image>
+      </view>
+      <view><label >请选择一张寸照</label></view>
+  </view>
+  <view class="weui-cell">
+      <view class="weui-cell__hd"><label class="weui-label">姓名</label></view>
+      <view class="weui-cell__bd">
+          <input  class="weui-input" placeholder="姓名" />
+      </view>
+  </view>
+  <view class="weui-cell">
+      <view class="weui-cell__hd"><label class="weui-label">教职工号</label></view>
+      <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="教职工号" />
+      </view>
+  </view>
+  <view class="weui-cell">
+      <view class="weui-cell__hd"><label class="weui-label">职位</label></view>
+      <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="职位" />
+      </view>
+  </view>
+  <view class="weui-cell">
+      <view class="weui-cell__hd"><label class="weui-label">学院</label></view>
+      <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入所在学院" />
+      </view>
+  </view>
+  <view class='photo'>
+      <view>
+          <image class='url' mode="{{item.mode}}" src="{{src}}" bindtap="gotoShow_file"></image>
+      </view>
+      <view><label >请选择带有校章的文件</label></view>
+  </view>
+  <view class='view_button'></view>
+  <view>
+  <button class='btn_Join' bindtap='btn_Join_Click'>点击提交</button>
+  </view>
+</view>

@@ -1,0 +1,40 @@
+<!--miniprogram/pages/CreateClub/CreateClub.wxml-->
+<view class='contain'>
+  <view class='photo'>
+      <view>
+          <image class='url' mode="{{item.mode}}" src="{{src}}" bindtap="gotoShow"></image>
+      </view>
+      <view><label >请选择社团的logo（没有可以不选）</label></view>
+  </view>
+  <view class="weui-cell">
+      <view class="weui-cell__hd"><label class="weui-label">社团名称</label></view>
+      <view class="weui-cell__bd">
+          <input  class="weui-input" placeholder="社团名称" />
+      </view>
+  </view>
+  <view class="weui-cell">
+      <view class="weui-cell__hd"><label class="weui-label">社团联系方式</label></view>
+      <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="联系方式" />
+      </view>
+  </view>
+
+  <view class="page-section">
+  <view class="weui-cell__hd"><label >社团简介</label></view>
+    <view class="textarea-wrp">
+      <textarea bindblur="bindTextAreaBlur" auto-height='true' placeholder="输入社团简介" />
+    </view>
+  </view>
+  <view class="section">
+  <view class="section__title">社团规模</view>
+  <picker bindchange="bindPickerChange" value="{{index}}" range="{{scale}}">
+    <view class="picker">
+      当前选择：{{scale[index]}}
+    </view>
+  </picker>
+</view>
+  <view class='view_button'></view>
+  <view>
+  <button class='btn_Join' bindtap='btn_Join_Click'>点击提交</button>
+  </view>
+</view>

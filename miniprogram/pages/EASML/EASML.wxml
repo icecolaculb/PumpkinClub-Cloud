@@ -1,0 +1,10 @@
+<!--miniprogram/pages/EASML/EASML.wxml-->
+<view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_access" catchtap="jumpToEAS">
+        <view class="weui-cell__bd">社团申请</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access" style="font-size: 0">
+            <view style="display: inline-block;vertical-align:middle; font-size: 17px;">社团名称</view>
+            <view class="weui-badge weui-badge_dot" style="margin-left: 5px;margin-right: 5px;"></view>
+        </view>
+     </view>
+</view>

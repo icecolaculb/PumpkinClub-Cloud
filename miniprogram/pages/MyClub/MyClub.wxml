@@ -1,0 +1,58 @@
+<!--miniprogram/pages/MyClub/MyClub.wxml-->
+<view class='ClubDetail' bindtap='click_ClubDetail'>
+    <image class='url' mode="{{item.mode}}" src="{{src}}" ></image>
+    <view class='txt_Club'>
+      <view><text>冰可乐</text></view>
+      <view>发展方向为移动端开发</view>
+
+    </view>
+  </view>
+  <view class='ClubDetail' bindtap='click_ClubDetail'>
+    <image class='url' mode="{{item.mode}}" src='../../images/btn.png' ></image>
+    <view class='txt_Club'>
+      <view><text>其他不重要的社团</text></view>
+      <view>社团简介</view>
+    </view>
+  </view>
+  <view class='ClubDetail' bindtap='click_ClubDetail'>
+    <image class='url' mode="{{item.mode}}" src='../../images/btn.png' ></image>
+    <view class='txt_Club'>
+      <view><text>其他不重要的社团</text></view>
+      <view>社团简介</view>
+    </view>
+  </view>
+  <view class='ClubDetail' bindtap='click_ClubDetail'>
+    <image class='url' mode="{{item.mode}}" src='../../images/btn.png' ></image>
+    <view class='txt_Club'>
+      <view><text>其他不重要的社团</text></view>
+      <view>社团简介</view>
+    </view>
+  </view>
+  <view class='ClubDetail' bindtap='click_ClubDetail'>
+    <image class='url' mode="{{item.mode}}" src='../../images/btn.png' ></image>
+    <view class='txt_Club'>
+      <view><text>其他不重要的社团</text></view>
+      <view>社团简介</view>
+    </view>
+  </view>
+  <view class='ClubDetail' bindtap='click_ClubDetail'>
+    <image class='url' mode="{{item.mode}}" src='../../images/btn.png' ></image>
+    <view class='txt_Club'>
+      <view><text>其他不重要的社团</text></view>
+      <view>社团简介</view>
+    </view>
+  </view>
+  <view class='ClubDetail' bindtap='click_ClubDetail'>
+    <image class='url' mode="{{item.mode}}" src='../../images/btn.png' ></image>
+    <view class='txt_Club'>
+      <view><text>其他不重要的社团</text></view>
+      <view>社团简介</view>
+    </view>
+  </view>
+  <view class='ClubDetail' bindtap='click_ClubDetail'>
+    <image class='url' mode="{{item.mode}}" src='../../images/btn.png' ></image>
+    <view class='txt_Club'>
+      <view><text>其他不重要的社团</text></view>
+      <view>社团简介</view>
+    </view>
+  </view>

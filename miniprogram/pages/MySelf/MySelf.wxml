@@ -1,0 +1,54 @@
+<!--miniprogram/pages/MySelf/MySelf.wxml-->
+<view class="container">
+  <view  bindtap="bindViewTap" class="userinfo">
+    <open-data type="userAvatarUrl" ></open-data>
+  </view>
+
+  <!-- 分割线 -->
+  <view class="divLine"></view>
+
+  <navigator url="../MyClub/MyClub" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <view class="weui-cell__bd">我的社团</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+  <navigator url="../MyActivity/MyActivity" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <view class="weui-cell__bd">我的活动</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+    <navigator url="../MyInform/MyInform" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <view class="weui-cell__bd">通知</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+    <navigator url="../CreateClub/CreateClub" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <view class="weui-cell__bd">创建社团</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+    <navigator url="../PM/PM" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <view class="weui-cell__bd">管理（社长）暂时先把三个都弄出来看效果</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+    <navigator url="../MCLC/MCLC" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <view class="weui-cell__bd">管理（院团委）</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+    <navigator url="../MSYLC/MSYLC" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <view class="weui-cell__bd">管理（校团委）</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+    <navigator url="../Application/Application" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <view class="weui-cell__bd">权限申请</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+    <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <view class="weui-cell__bd">开发人员</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+    <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <view class="weui-cell__bd">分享小程序</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+    <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <view class="weui-cell__bd">联系我们</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+</view>

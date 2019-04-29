@@ -1,0 +1,14 @@
+<!--miniprogram/pages/Activity/Activity.wxml-->
+<view>
+  <block wx:for="{{Activity}}" wx:for-item="cell" wx:key="index">
+      <view  data-index="{{index}}"  class='ActivityDetail' bindtap='click_ToActivityDetail'>
+          <image class='url' mode="{{item.mode}}" src="{{cell.src}}" ></image>
+          <view class='txt_Activity'>
+            <view ><text class='txt_ClubName'>{{cell.ActivityName}}</text> 
+            <view ><text>活动简介：{{cell.ActivityDetail}}</text> </view>
+            </view>
+          </view>
+      </view>
+  </block>
+  
+</view>

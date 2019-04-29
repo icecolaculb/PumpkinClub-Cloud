@@ -1,0 +1,58 @@
+{
+  "pages": [
+    "pages/Club/Club",
+    "pages/index/index",
+    "pages/userConsole/userConsole",
+    "pages/storageConsole/storageConsole",
+    "pages/databaseGuide/databaseGuide",
+    "pages/addFunction/addFunction",
+    "pages/deployFunctions/deployFunctions",
+    "pages/chooseLib/chooseLib",
+    "pages/ACLC/ACLC",
+    "pages/ACLCML/ACLCML",
+    "pages/AE/AE",
+    "pages/AEML/AEML",
+    "pages/Activity/Activity",
+    "pages/ActivityDetail/ActivityDetail",
+    "pages/Application/Application",
+    "pages/CR/CR",
+    "pages/CRML/CRML",
+    "pages/ClubDetail/ClubDetail",
+    "pages/ClubJoin/ClubJoin",
+    "pages/CreateClub/CreateClub",
+    "pages/EAS/EAS",
+    "pages/EASML/EASML",
+    "pages/EP/EP",
+    "pages/MCLC/MCLC",
+    "pages/MSYLC/MSYLC",
+    "pages/MyActivity/MyActivity",
+    "pages/MyClub/MyClub",
+    "pages/MyInform/MyInform",
+    "pages/MySelf/MySelf",
+    "pages/PM/PM",
+    "pages/PNS/PNS"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "云开发 QuickStart",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/Club/Club",
+        "text": "社团"
+      },
+      {
+        "pagePath": "pages/Activity/Activity",
+        "text": "活动"
+      },
+      {
+        "pagePath": "pages/MySelf/MySelf",
+        "text": "我的"
+      }
+    ]
+  }
+}

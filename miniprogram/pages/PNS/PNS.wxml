@@ -1,0 +1,21 @@
+<!--miniprogram/pages/PNS/PNS.wxml-->
+<view>
+  <view class="section">
+  <view class="section__title">接收对象</view>
+  <picker bindchange="bindPickerChange" value="{{index}}" range="{{scale}}"  >
+    <view class="picker">
+      <text class='section_choose'>当前选择：</text>
+      <text>{{scale[index]}}</text>
+    </view>
+  </picker>
+</view>
+
+    <view class="page-section">
+  <view class="weui-cell__hd"><label >通知内容</label></view>
+    <view class="textarea-wrp">
+      <textarea class='text_area' maxlength='500' bindblur="bindTextAreaBlur" auto-height='true' placeholder="请输入通知内容" />
+    </view>
+  </view>
+
+</view>
+

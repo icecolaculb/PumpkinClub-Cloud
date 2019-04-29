@@ -1,0 +1,46 @@
+<!--miniprogram/pages/EP/EP.wxml-->
+<!--pages/EP/EP.wxml-->
+<view class='contain'>
+  <view class='photo'>
+      <view>
+          <image class='url' mode="{{item.mode}}" src="{{src}}" bindtap="gotoShow"></image>
+      </view>
+      <view><label >请选择活动logo（没有可以选择社徽）</label></view>
+  </view>
+  <view class="weui-cell">
+      <view class="weui-cell__hd"><label class="weui-label">活动名称</label></view>
+      <view class="weui-cell__bd">
+          <input  class="weui-input" placeholder="活动名称" />
+      </view>
+  </view>
+  <view class="weui-cell">
+      <view class="weui-cell__hd"><label class="weui-label">活动时间</label></view>
+      <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="活动时间" />
+      </view>
+  </view>
+    <view class="page-section">
+  <view class="weui-cell__hd"><label >活动简介</label></view>
+    <view class="textarea-wrp">
+      <textarea bindblur="bindTextAreaBlur" auto-height='true' placeholder="输入活动简介" />
+    </view>
+  </view>
+  <view class="weui-cell">
+      <view class="weui-cell__hd"><label class="weui-label">发起社团</label></view>
+      <view class="weui-cell__bd">
+          <input class="weui-input" value="发起社团的名字" disabled='true' />
+      </view>
+  </view>
+  <view class="weui-cell">
+      <view class="weui-cell__hd"><label class="weui-label">社团规模</label></view>
+      <view class="weui-cell__bd">
+          <input class="weui-input" value="发起社团的规模" disabled='true' />
+      </view>
+  </view>
+  <view class='view_button'></view>
+  <view>
+  <button class='btn_Join' bindtap='btn_Join_Click'>点击提交</button>
+  </view>
+</view>
+
+

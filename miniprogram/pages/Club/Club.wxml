@@ -1,0 +1,25 @@
+<!--miniprogram/pages/Club/Club.wxml-->
+<view class="page"> 
+    <view class="page-bottom"> 
+        <view class="page-content"> 
+          <block wx:for="{{College}}" wx:for-item="cell" wx:key="index">
+            <view class='wc' data-index="{{index}}" bindtap='click_Club'>
+              <text>{{cell.CollegeName}}</text> 
+            </view>
+          </block>
+        </view> 
+    </view> 
+    
+    <view bindtouchmove="tap_drag" bindtouchend="tap_end" bindtouchstart="tap_start" class="page-top {{open ? 'c-state1' : ''}}"> 
+          <block wx:for="{{Club}}" wx:for-item="cell" wx:key="index">
+            <view  data-index="{{index}}"  class='ClubDetail' bindtap='click_ToClubDetail'>
+             <image class='url' mode="{{item.mode}}" src="{{cell.src}}" ></image>
+              <view class=''>
+                <view ><text class='txt_ClubName'>{{cell.ClubName}}</text> 
+                <view ><text>社团简介：{{cell.ClubDetail}}</text> </view>
+                </view>
+              </view>
+            </view>
+          </block>
+    </view> 
+</view> 
