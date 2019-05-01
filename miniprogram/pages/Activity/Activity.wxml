@@ -1,5 +1,5 @@
 <!--miniprogram/pages/Activity/Activity.wxml-->
-<view>
+<view class="container">
   <block wx:for="{{Activity}}" wx:for-item="cell" wx:key="index">
       <view  data-index="{{index}}"  class='ActivityDetail' bindtap='click_ToActivityDetail'>
           <image class='url' mode="{{item.mode}}" src="{{cell.src}}" ></image>

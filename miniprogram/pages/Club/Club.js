@@ -57,6 +57,7 @@ Page({
       ],
       College: [
         { CollegeName: "全部社团" },
+        { CollegeName: "校级社团" },
         { CollegeName: "计算机学院" },
         { CollegeName: "衡阳医学院" },
         { CollegeName: "核科学技术学院", },
@@ -154,14 +155,14 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    
   },
 
   /**
