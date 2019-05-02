@@ -12,19 +12,6 @@ Page({
       mode: 'center',
       text: 'center：不缩放图片，只显示图片的中间区域',
     }],
-    src: '../../Images/photo.jpg',
-
-    scale: ['校级', '院级'],
-    scale_array: [
-      {
-        id: 0,
-        name: '校级'
-      },
-      {
-        id: 1,
-        name: '院级'
-      }
-    ],
     usex: ['男', '女'],
     user_array: [
       {
@@ -63,18 +50,13 @@ Page({
       { id: 22, name: "创新创业学院", },
       { id: 23, name: "建筑学院", }
     ],
-    scale_index: 0,
     College_index:0,
     usex_index:0,
+    src: '',
     clubname:'',//社团名称
     clubusername:'',//社长姓名
     clubintroduction:'',//社团简介
     clubuserinformation:''//联系方式
-  },
-  bindPickerChange_scale: function (e) {
-    this.setData({   //给变量赋值
-      scale_index: e.detail.value,  //每次选择了下拉列表的内容同时修改下标然后修改显示的内容，显示的内容和选择的内容一致
-    })
   },
   bindPickerChange_College: function (e) {
     this.setData({   //给变量赋值
@@ -118,52 +100,42 @@ Page({
           ClubID: 1,
           ClubIntroduction: this.data.clubintroduction,
           ClubLevel: 4,
-          ClubLogo: 'cloud://testdemo-cba87d.7465-testdemo-cba87d/1.jpg',
+          ClubLogo: this.data.src,
           ClubMember: [
             [
               [
-                '用户编号',
-                1
+                '用户编号', 1
               ],
               [
-                '姓名',
-                this.data.clubusername
+                '姓名', this.data.clubusername
               ],
               [
-                '性别',
-                this.data.usex[this.data.usex_index]
+                '性别', this.data.usex[this.data.usex_index]
               ],
               [
-                '职位',
-                '社长'
+                '职位', '社长'
               ],
               [
-                '联系方式',
-                this.data.clubuserinformation
+                '联系方式', this.data.clubuserinformation
               ]
             ]
           ],
           Activity: [
             [
               [
-                '活动编号',
-                0
+                '活动编号', 0
               ],
               [
-                '具体内容文件',
-                '真正的内容'
+                '具体内容文件', '真正的内容'
               ],
               [
-                '发布时间',
-                '2019-1-1'
+                '发布时间', '2019-1-1'
               ],
               [
-                '截至时间',
-                '2019-2-2'
+                '截至时间', '2019-2-2'
               ],
               [
-                '排序有限度',
-                '111'
+                '排序优先度','111'
               ]
             ]
           ]
@@ -174,7 +146,6 @@ Page({
         success: res => {
           // 在返回结果中会包含新创建的记录的 _id
           this.setData({
-
             counterId: res._id,
           })
           wx.showToast({
@@ -193,24 +164,41 @@ Page({
     }
   },
   gotoShow: function () {
-    var _this = this
+    let that=this;
     wx.chooseImage({
       count: 1, // 最多可以选择的图片张数，默认9
       sizeType: ['compressed'], // original 原图，compressed 压缩图，默认二者都有
-      sourceType: ['album'], // album 从相册选图，camera 使用相机，默认二者都有
-      success: function (res) {
-        this.setData({
-          src: res.tempFilePaths
+      sourceType: ['album','camera'], // album 从相册选图，camera 使用相机，默认二者都有
+      success(res) {
+        wx.showLoading({
+          title: '上传中',
+        });
+        //选择完成会先返回一个临时地址保存备用
+        const tempFilePaths = res.tempFilePaths
+        //将照片上传至云端需要刚才存储的临时地址
+        wx.cloud.uploadFile({
+          cloudPath: 'test.jpg',
+          filePath: tempFilePaths[0],
+          success(res) {
+            //上传成功后会返回永久地址
+            console.log(res.fileID)
+            that.setData({
+              src: res.fileID,//云存储图片路径,可以把这个路径存到集合，要用的时候再取出来
+            });
+          },
+          
         })
       },
-      fail: function () {
-        // fail
-      },
-      complete: function () {
-        // complete
-      }
-    })
+          fail: e => {
+            console.error('[上传图片] 失败：', e)
+          },
+          complete: () => {
+            wx.hideLoading()
+          }
+        })
+      
   },
+
   /**
    * 生命周期函数--监听页面加载
    */

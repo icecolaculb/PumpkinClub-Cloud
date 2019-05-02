@@ -4,7 +4,7 @@
       <view>
           <image class='url' mode="{{item.mode}}" src="{{src}}" bindtap="gotoShow"></image>
       </view>
-      <view><label >请选择社团的logo（没有可以不选）</label></view>
+      <view><label >请选择社团的logo</label></view>
   </view>
 
   <view class="weui-cell">

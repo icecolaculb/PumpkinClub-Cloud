@@ -13,46 +13,46 @@ Page({
         {
           ClubName: "冰可乐",
           ClubDetail: "冰可乐的简介",
-          src: "../../images/1.jpg",
+          src: "cloud://testdemo-cba87d.7465-testdemo-cba87d/1.jpg",
 
         },
         {
           ClubName: "社团A",
           ClubDetail: "社团A的简介",
-          src: "../../images/1.jpg",
+          src: "cloud://testdemo-cba87d.7465-testdemo-cba87d/1.jpg",
 
         },
         {
           ClubName: "社团B",
           ClubDetail: "社团B的简介",
-          src: "../../images/1.jpg",
+          src: "cloud://testdemo-cba87d.7465-testdemo-cba87d/1.jpg",
 
         },
         {
           ClubName: "社团C",
           ClubDetail: "社团C的简介",
-          src: "../../images/1.jpg",
+          src: "cloud://testdemo-cba87d.7465-testdemo-cba87d/1.jpg",
 
         },
         {
           ClubName: "社团D",
           ClubDetail: "社团D的简介",
-          src: "../../images/1.jpg",
+          src: "cloud://testdemo-cba87d.7465-testdemo-cba87d/1.jpg",
         },
         {
           ClubName: "社团E",
           ClubDetail: "社团E的简介",
-          src: "../../images/1.jpg",
+          src: "cloud://testdemo-cba87d.7465-testdemo-cba87d/1.jpg",
         },
         {
           ClubName: "社团F",
           ClubDetail: "社团F的简介",
-          src: "../../images/1.jpg",
+          src: "cloud://testdemo-cba87d.7465-testdemo-cba87d/1.jpg",
         },
         {
           ClubName: "社团G",
           ClubDetail: "社团G的简介",
-          src: "../../images/1.jpg",
+          src: "cloud://testdemo-cba87d.7465-testdemo-cba87d/1.jpg",
         }
       ],
       College: [
