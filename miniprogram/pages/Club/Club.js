@@ -5,56 +5,18 @@ Page({
    * 页面的初始数据
    */
   data: {
+    array: [{
+      mode: 'scaleToFill',
+      text: 'scaleToFill：不保持纵横比缩放图片，使图片完全适应'
+    }, {
+      mode: 'center',
+      text: 'center：不缩放图片，只显示图片的中间区域',
+    }],
       open: false,
       mark: 0,
       newmark: 0,
       istoright: true,
-      Club: [
-        {
-          ClubName: "冰可乐",
-          ClubDetail: "冰可乐的简介",
-          src: "cloud://testdemo-cba87d.7465-testdemo-cba87d/1.jpg",
-
-        },
-        {
-          ClubName: "社团A",
-          ClubDetail: "社团A的简介",
-          src: "cloud://testdemo-cba87d.7465-testdemo-cba87d/1.jpg",
-
-        },
-        {
-          ClubName: "社团B",
-          ClubDetail: "社团B的简介",
-          src: "cloud://testdemo-cba87d.7465-testdemo-cba87d/1.jpg",
-
-        },
-        {
-          ClubName: "社团C",
-          ClubDetail: "社团C的简介",
-          src: "cloud://testdemo-cba87d.7465-testdemo-cba87d/1.jpg",
-
-        },
-        {
-          ClubName: "社团D",
-          ClubDetail: "社团D的简介",
-          src: "cloud://testdemo-cba87d.7465-testdemo-cba87d/1.jpg",
-        },
-        {
-          ClubName: "社团E",
-          ClubDetail: "社团E的简介",
-          src: "cloud://testdemo-cba87d.7465-testdemo-cba87d/1.jpg",
-        },
-        {
-          ClubName: "社团F",
-          ClubDetail: "社团F的简介",
-          src: "cloud://testdemo-cba87d.7465-testdemo-cba87d/1.jpg",
-        },
-        {
-          ClubName: "社团G",
-          ClubDetail: "社团G的简介",
-          src: "cloud://testdemo-cba87d.7465-testdemo-cba87d/1.jpg",
-        }
-      ],
+      Club_list:[],
       College: [
         { CollegeName: "全部社团" },
         { CollegeName: "校级社团" },
@@ -148,7 +110,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    //创建一个变量来保存页面Page示例中的this,方便后续使用
+    var _this = this;
+    const db = wx.cloud.database({
+      env:'testdemo-cba87d'
+    })
+    db.collection('Club').get({
+      success: res => {
+        this.setData({
+          Club_list:res.data
+        })
+      }
+    })
   },
 
   /**

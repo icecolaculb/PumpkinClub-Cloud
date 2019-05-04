@@ -174,11 +174,13 @@ Page({
           title: '上传中',
         });
         //选择完成会先返回一个临时地址保存备用
-        const tempFilePaths = res.tempFilePaths
+        let filePath = res.tempFilePaths[0];
+        const name = Math.random()*1000000;
+        const cloudPath = name + filePath.match(/\.[^.]+?$/)[0]
         //将照片上传至云端需要刚才存储的临时地址
         wx.cloud.uploadFile({
-          cloudPath: 'test.jpg',
-          filePath: tempFilePaths[0],
+          cloudPath,
+          filePath,
           success(res) {
             //上传成功后会返回永久地址
             console.log(res.fileID)
