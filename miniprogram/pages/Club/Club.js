@@ -45,9 +45,11 @@ Page({
         { CollegeName: "建筑学院", }
       ],
   },
-    click_ToClubDetail: function () {
+    click_ToClubDetail: function (e) {
+      var id = e.currentTarget.dataset.id;
+      let club_list=JSON.stringify(this.data.Club_list[id])
       wx.navigateTo({
-        url: '../ClubDetail/ClubDetail',
+        url: '../ClubDetail/ClubDetail?Club='+club_list,
       })//点击跳转
     },
     click_Club: function () {

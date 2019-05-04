@@ -11,6 +11,8 @@
 	"appid": "wx45c17c923432ad08",
 	"projectname": "icecola",
 	"libVersion": "2.2.5",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,

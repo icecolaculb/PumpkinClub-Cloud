@@ -12,7 +12,7 @@
     
     <view bindtouchmove="tap_drag" bindtouchend="tap_end" bindtouchstart="tap_start" class="page-top {{open ? 'c-state1' : ''}}"> 
           <block wx:for="{{Club_list}}" wx:for-item="cell" wx:key="index">
-            <view  data-index="{{index}}"  class='ClubDetail' bindtap='click_ToClubDetail'>
+            <view  data-id="{{index}}"  class='ClubDetail' bindtap='click_ToClubDetail'>
              <image class='url' mode="{{item.mode}}" src="{{cell.ClubLogo}}" ></image>
               <view class=''>
                 <view ><text class='txt_ClubName'>{{cell.ClubName}}</text> 

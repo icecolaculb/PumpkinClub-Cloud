@@ -1,22 +1,22 @@
 <!--miniprogram/pages/ClubDetail/ClubDetail.wxml-->
-<view>
-<image class='img_ClubDetail' mode="{{item.mode}}" src="{{src}}" ></image>
+<view >
+<image class='img_ClubDetail' mode="{{item.mode}}" src="{{ClubLogo}}" ></image>
 <view class='view_ClubName'>
-  <text class='txt_ClubName'>冰可乐</text>
+  <text class='txt_ClubName'>{{ClubName}}</text>
 </view>
 <view class='line'></view>
 <view>
   <text class='txt_ClubProfile'>社团简介：</text>
 </view>
 <view>
-  <text class='txt_Profiles'> 冰可乐社团创始于2019年，由第一届会长祝一淮一手创立，在社团成立之初邀请了社团主干成员岳巍、程钰斌、曾涛等人，并决定发展方向为移动端开发，在会长的英明领导下，冰可乐社团日益壮大，培养的一个又一个的人才，如果你希望变得更优秀，或者想要试着做一些项目，又或是想加入很多计算机的大佬，那么，就请加入我们！</text>
+  <text class='txt_Profiles'>{{ClubIntroduction}}</text>
 </view>
 <view class='others'>
   <text>联系方式:</text>
-  <text>暂时没有</text>
+  <text>{{Clubuserinformation[0][4][1]}}</text>
 </view>
 <view class='others'>
-  <text>社团规模：</text><text>院级</text>
+  <text>所属学院：</text><text>{{ClubCollege}}</text>
 </view>
 <view class='view_button'></view>
 <view>

@@ -12,8 +12,14 @@ Page({
       mode: 'center',
       text: 'center：不缩放图片，只显示图片的中间区域',
     }],
-    src: '../../Images/1.jpg'
+    club:[],
+    ClubName:'',
+    ClubIntroduction:'',
+    Clubuserinformation:'',
+    ClubCollege:'',
+    ClubLogo:''
   },
+  
   btn_Join_click: function () {
     wx.navigateTo({
       url: '../ClubJoin/ClubJoin',
@@ -23,14 +29,25 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var _this=this
+    var arr = JSON.parse(options.Club)
+    this.setData({
+      club:arr
+    })
+    
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.setData({
+      ClubLogo: this.data.club.ClubLogo,
+      ClubName: this.data.club.ClubName,
+      ClubIntroduction: this.data.club.ClubIntroduction,
+      Clubuserinformation: this.data.club.ClubMember,
+      ClubCollege: this.data.club.CollegeID,
+    })
   },
 
   /**
