@@ -2,7 +2,7 @@
 <view class='contain'>
   <view class='photo'>
       <view>
-          <image class='url' mode="{{item.mode}}" src="{{src}}" bindtap="gotoShow"></image>
+          <image class='url' mode="{{item.mode}}" src="{{src}}" bindtap="gotoShow1"></image>
       </view>
       <view><label >请选择社团的logo</label></view>
   </view>
@@ -29,6 +29,14 @@
     </view>
   </picker>
 </view>
+
+<view class='photo'>
+      <view>
+          <image class='url' mode="{{item.mode}}" src="{{chaptersrc}}" bindtap="gotoShow2"></image>
+      </view>
+      <view><label >请上传学校盖章文件图片</label></view>
+  </view>
+
  <view class='line'></view>
 
  <view class="weui-cell">
