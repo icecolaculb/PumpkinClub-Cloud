@@ -17,14 +17,12 @@ Page({
     ClubIntroduction:'',
     Clubuserinformation:'',
     ClubCollege:'',
-    ClubLogo:'',
-    clubid:'',
+    ClubLogo:''
   },
   
   btn_Join_click: function () {
-    var _id=this.data.clubid;
     wx.navigateTo({
-      url: '../ClubJoin/ClubJoin?_id='+_id,
+      url: '../ClubJoin/ClubJoin',
     })//点击跳转
   },
   /**
@@ -49,7 +47,6 @@ Page({
       ClubIntroduction: this.data.club.ClubIntroduction,
       Clubuserinformation: this.data.club.ClubMember,
       ClubCollege: this.data.club.CollegeID,
-      clubid:this.data.club._id,
     })
   },
 

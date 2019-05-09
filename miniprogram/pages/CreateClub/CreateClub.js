@@ -52,12 +52,11 @@ Page({
     ],
     College_index:0,
     usex_index:0,
-    src: '',//社团logo地址
+    src: '',
     clubname:'',//社团名称
     clubusername:'',//社长姓名
     clubintroduction:'',//社团简介
-    clubuserinformation:'',//联系方式
-    chaptersrc:''//校章文件地址
+    clubuserinformation:''//联系方式
   },
   bindPickerChange_College: function (e) {
     this.setData({   //给变量赋值
@@ -92,16 +91,16 @@ Page({
     this.setData({
       clubuserinformation:e.detail.value,
     })
-  }, 
+  },
   btn_Join_Click: function () {
     onAdd:{
       const db = wx.cloud.database()
       db.collection('Club').add({
         data: {
+          ClubID: 1,
           ClubIntroduction: this.data.clubintroduction,
           ClubLevel: 4,
           ClubLogo: this.data.src,
-          Clubchapter: this.data.chaptersrc,
           ClubMember: [
             [
               [
@@ -148,14 +147,14 @@ Page({
           CollegeID: this.data.College[this.data.College_index],
         },
         success: res => {
-          wx.navigateBack({
-            delta: 2,
-            success: function () {
-              wx.showToast({
-                title: '提交成功',
-              })
-            }
+          // 在返回结果中会包含新创建的记录的 _id
+          this.setData({
+            counterId: res._id,
           })
+          wx.showToast({
+            title: '提交成功',
+          })
+          console.log('[数据库] [新增记录] 成功，记录社团信息: ', res._id)
         },
         fail: err => {
           wx.showToast({
@@ -167,7 +166,7 @@ Page({
       })
     }
   },
-  gotoShow1: function () {
+  gotoShow: function () {
     let that=this;
     wx.chooseImage({
       count: 1, // 最多可以选择的图片张数，默认9
@@ -187,6 +186,7 @@ Page({
           filePath,
           success(res) {
             //上传成功后会返回永久地址
+            console.log(res.fileID)
             that.setData({
               src: res.fileID,//云存储图片路径,可以把这个路径存到集合，要用的时候再取出来
             });
@@ -202,41 +202,6 @@ Page({
           }
         })
       
-  },
-  gotoShow2: function () {
-    let that = this;
-    wx.chooseImage({
-      count: 1, // 最多可以选择的图片张数，默认9
-      sizeType: ['compressed'], // original 原图，compressed 压缩图，默认二者都有
-      sourceType: ['album', 'camera'], // album 从相册选图，camera 使用相机，默认二者都有
-      success(res) {
-        wx.showLoading({
-          title: '上传中',
-        });
-        //选择完成会先返回一个临时地址保存备用
-        let filePath = res.tempFilePaths[0];
-        const name = Math.random() * 1000000;
-        const cloudPath = name + filePath.match(/\.[^.]+?$/)[0]
-        //将照片上传至云端需要刚才存储的临时地址
-        wx.cloud.uploadFile({
-          cloudPath,
-          filePath,
-          success(res) {
-            //上传成功后会返回永久地址
-            that.setData({
-              chaptersrc: res.fileID,//云存储图片路径,可以把这个路径存到集合，要用的时候再取出来
-            });
-          },
-
-        })
-      },
-      fail: e => {
-        console.error('[上传图片] 失败：', e)
-      },
-      complete: () => {
-        wx.hideLoading()
-      }
-    })
   },
 
   /**
