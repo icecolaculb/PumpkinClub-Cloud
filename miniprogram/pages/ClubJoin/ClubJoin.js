@@ -103,30 +103,8 @@ Page({
   },
 
     btn_Join_Click: function () {
-      onClubInc: {
-        const db = wx.cloud.database()
-        const _ = db.command
-        db.collection('Club').doc(this.data.Clubid).update({
-          data: {
-            ClubMember: _.unshift([
-              [
-                ['用户编号', parseInt(this.data.Membersum) + 1],
-                ['姓名', this.data.UserName],
-                ['性别', this.data.usex[this.data.usex_index]],
-                ['职位', '会员'],
-                ['联系方式', this.data.QQ]
-              ]
-            ]
-              )
-          },
-          success(res) {
-            console.log("提交成功")
-            wx.showToast({
-              title: '提交成功',
-            })
-          }
-        })
-      }
+    this.upDate()
+
     onAdd: {
       const db = wx.cloud.database()
       db.collection('User').add({
@@ -170,7 +148,35 @@ Page({
     }
     
   },
-  
+  upDate(){
+    
+    wx.cloud.callFunction({
+      name: 'runDB',
+      data: {
+        type: "update", //指定操作是insert  
+        db: "Club", //指定操作的数据表
+        data: { //指定insert的数据
+          indexKey: this.data.Clubid,
+          ClubMember: [
+            [
+              ['用户编号', parseInt(this.data.Membersum) + 1],
+              ['姓名', this.data.UserName],
+              ['性别', this.data.usex[this.data.usex_index]],
+              ['职位', '会员'],
+              ['联系方式', this.data.QQ]
+            ]
+          ]
+          
+        }
+      },
+      success: res => {
+        console.log('[云函数] [insertDB] 已增加Subjcts信息' + res.result._id)
+      },
+      fail: err => {
+        console.error('[云函数] [insertDB] 增加Subject失败', err)
+      }
+    })
+  },
   onLoad: function (options) {
     var _this=this
     var clubid = options._id
