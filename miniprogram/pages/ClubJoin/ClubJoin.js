@@ -58,6 +58,8 @@ Page({
     UserSpeciality:'',//专业
     UserName:'',      //姓名
     Clubid:'',        //加入的社团的_id
+    openid:'',        //用户openid
+    Mumbersum:'',     //社团会员人数
   },
   bindPickerChange_College: function (e) {
     this.setData({   //给变量赋值
@@ -99,7 +101,32 @@ Page({
       UserSpeciality: e.detail.value,
     })
   },
+
     btn_Join_Click: function () {
+      onClubInc: {
+        const db = wx.cloud.database()
+        const _ = db.command
+        db.collection('Club').doc(this.data.Clubid).update({
+          data: {
+            ClubMember: _.unshift([
+              [
+                ['用户编号', parseInt(this.data.Membersum) + 1],
+                ['姓名', this.data.UserName],
+                ['性别', this.data.usex[this.data.usex_index]],
+                ['职位', '会员'],
+                ['联系方式', this.data.QQ]
+              ]
+            ]
+              )
+          },
+          success(res) {
+            console.log("提交成功")
+            wx.showToast({
+              title: '提交成功',
+            })
+          }
+        })
+      }
     onAdd: {
       const db = wx.cloud.database()
       db.collection('User').add({
@@ -113,7 +140,9 @@ Page({
             ]
           ],
           FavoriteActivityID:[],
-          FavoriteClubID: [],
+          FavoriteClubID: [
+            this.data.Clubid
+          ],
           Photosrc: this.data.src,
           StudentNumber:this.data.StudentNumber,
           UserCollege: this.data.College[this.data.College_index],
@@ -140,48 +169,33 @@ Page({
       })
     }
     
-    onClubInc:{
-      const db = wx.cloud.database()
-      const _ =db.command
-      db.collection('Club').doc('Clubid').update({
-        data:{
-          ClubMember:_.push(
-            [
-              [
-                [
-                  '用户编号',
-                ],
-                [
-                  '姓名', this.data.UserName
-                ],
-                [
-                  '性别', this.data.usex[this.data.usex_index]
-                ],
-                [
-                  '职位', '会员'
-                ],
-                [
-                  '联系方式', this.data.QQ
-                ]
-              ]
-            ]
-          )
-        },
-        success(res){
-          wx.showToast({
-            title: '提交成功',
-          })
-        }
-      })
-    }
   },
+  
   onLoad: function (options) {
     var _this=this
     var clubid = options._id
+    var membersum = options.membersum
     this.setData({
-        Clubid:clubid
+        Clubid:clubid,
+        Membersum:membersum,
+    }),
+      this.getOpenid();
+    
+  },
+  // 获取用户openid
+  getOpenid() {
+    let that = this;
+    wx.cloud.callFunction({
+      name: 'getOpenID',
+      complete: res => {
+        var openid = res.result.openId;
+        that.setData({
+          openid: openid
+        })
+      }
     })
   },
+
   gotoShow: function () {
     let that = this;
     wx.chooseImage({
@@ -189,7 +203,7 @@ Page({
       sizeType: ['compressed'], // original 原图，compressed 压缩图，默认二者都有
       sourceType: ['album', 'camera'], // album 从相册选图，camera 使用相机，默认二者都有
       success(res) {
-        wx.showLoading({
+        wx.showToast({
           title: '上传中',
         });
         //选择完成会先返回一个临时地址保存备用

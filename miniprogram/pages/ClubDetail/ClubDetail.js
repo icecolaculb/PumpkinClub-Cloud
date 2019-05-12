@@ -19,12 +19,14 @@ Page({
     ClubCollege:'',
     ClubLogo:'',
     clubid:'',
+    membersum:'',
   },
   
   btn_Join_click: function () {
+    var membersum=this.data.membersum;
     var _id=this.data.clubid;
     wx.navigateTo({
-      url: '../ClubJoin/ClubJoin?_id='+_id,
+      url: '../ClubJoin/ClubJoin?_id=' + _id + '&membersum=' + membersum,
     })//点击跳转
   },
   /**
@@ -50,6 +52,7 @@ Page({
       Clubuserinformation: this.data.club.ClubMember,
       ClubCollege: this.data.club.CollegeID,
       clubid:this.data.club._id,
+      membersum:this.data.club.ClubMember[0][0][1],
     })
   },
 

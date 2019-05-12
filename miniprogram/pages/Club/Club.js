@@ -112,18 +112,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //创建一个变量来保存页面Page示例中的this,方便后续使用
-    var _this = this;
-    const db = wx.cloud.database({
-      env:'testdemo-cba87d'
-    })
-    db.collection('Club').get({
-      success: res => {
-        this.setData({
-          Club_list:res.data
-        })
-      }
-    })
+    
   },
 
   /**
@@ -137,7 +126,18 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    //创建一个变量来保存页面Page示例中的this,方便后续使用
+    var _this = this;
+    const db = wx.cloud.database({
+      env: 'testdemo-cba87d'
+    })
+    db.collection('Club').get({
+      success: res => {
+        this.setData({
+          Club_list: res.data
+        })
+      }
+    })
   },
 
   /**
