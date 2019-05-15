@@ -9,7 +9,10 @@ Page({
     takeSession: false,
     requestResult: '',
     name: '',
-    openid: ''
+    openid: '',
+    text:'个人信息',
+    xx:[],
+    personurl:'',
   },
 
   onLoad: function () {
@@ -35,8 +38,35 @@ Page({
         }
       }
     })
+    
   },
-
+  onShow:function(){
+    let _this = this
+    const db = wx.cloud.database()
+    db.collection('User').where({
+      _openid: this.data.openid,
+    })
+      .get({
+        success: res => {
+          
+          if(res.data.length==0){
+            let arr1=[]
+            this.setData({
+              personurl: '../ClubJoin/ClubJoin?arr='+arr1
+            })
+            console.log(this.data.personurl)
+          }else{
+            this.setData({
+              xx: JSON.stringify(res.data[0]),
+            })
+            let arr = this.data.xx;
+            this.setData({
+              personurl: '../ClubJoin/ClubJoin?arr=' + arr
+            })
+          }
+        }
+      })
+  },
   onAdd: function () {
     const db = wx.cloud.database()
     db.collection('counters').add({

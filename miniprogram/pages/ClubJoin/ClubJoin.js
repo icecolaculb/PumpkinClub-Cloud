@@ -1,6 +1,6 @@
 // miniprogram/pages/ClubJoin/ClubJoin.js
-Page({
 
+Page({
   /**
    * 页面的初始数据
    */
@@ -57,9 +57,13 @@ Page({
     StudentNumber:'', //学号
     UserSpeciality:'',//专业
     UserName:'',      //姓名
-    Clubid:'',        //加入的社团的_id
     openid:'',        //用户openid
-    Mumbersum:'',     //社团会员人数
+    xx:[],
+    Name:'姓名',
+    Nember:'学号',
+    qq:'qq',
+    tel:'请输入手机号',
+    coll:'请输入所在专业',
   },
   bindPickerChange_College: function (e) {
     this.setData({   //给变量赋值
@@ -103,89 +107,118 @@ Page({
   },
 
     btn_Join_Click: function () {
-    this.upDate()
-
-    onAdd: {
-      const db = wx.cloud.database()
-      db.collection('User').add({
-        data: {
-          ContactInformation: [
-            [
-              'QQ',this.data.QQ
-            ],
-            [
-              '手机号', this.data.PhoneNumber
-            ]
-          ],
-          FavoriteActivityID:[],
-          FavoriteClubID: [
-            this.data.Clubid
-          ],
-          Photosrc: this.data.src,
-          StudentNumber:this.data.StudentNumber,
-          UserCollege: this.data.College[this.data.College_index],
-          UserName:this.data.UserName,
-          UserSpeciality: this.data.UserSpeciality,
-        },
-        success: res => {
-          wx.navigateBack({
-            delta: 2,
-            success: function () {
-              wx.showToast({
-                title: '提交成功',
-              })
-            }
-          })
-        },
-        fail: err => {
-          wx.showToast({
-            icon: 'none',
-            title: '提交失败'
-          })
-          console.error('[数据库] [新增记录] 失败：', err)
-        }
-      })
-    }
+      if(this.data.xx==null){
+        this.onAdd()
+      }
+      else{
+        this.update()
+      }
     
   },
-  upDate(){
-    
-    wx.cloud.callFunction({
-      name: 'runDB',
+  onAdd() {
+    const db = wx.cloud.database()
+      db.collection('User').add({
       data: {
-        type: "update", //指定操作是insert  
-        db: "Club", //指定操作的数据表
-        data: { //指定insert的数据
-          indexKey: this.data.Clubid,
-          ClubMember: [
-            [
-              ['用户编号', parseInt(this.data.Membersum) + 1],
-              ['姓名', this.data.UserName],
-              ['性别', this.data.usex[this.data.usex_index]],
-              ['职位', '会员'],
-              ['联系方式', this.data.QQ]
-            ]
+        ContactInformation: [
+          [
+            'QQ', this.data.QQ
+          ],
+          [
+            '手机号', this.data.PhoneNumber
           ]
-          
-        }
+        ],
+        FavoriteActivityID: [],
+        FavoriteClubID: [],
+        Photosrc: this.data.src,
+        StudentNumber: this.data.StudentNumber,
+        UserCollege: this.data.College[this.data.College_index],
+        UserName: this.data.UserName,
+        UserSpeciality: this.data.UserSpeciality,
       },
       success: res => {
-        console.log('[云函数] [insertDB] 已增加Subjcts信息' + res.result._id)
+        wx.navigateBack({
+          delta: 1,
+          success: function () {
+            wx.showToast({
+              title: '提交成功',
+            })
+          }
+        })
       },
       fail: err => {
-        console.error('[云函数] [insertDB] 增加Subject失败', err)
+        wx.showToast({
+          icon: 'none',
+          title: '提交失败'
+        })
+        console.error('[数据库] [新增记录] 失败：', err)
+      }
+    })
+  },
+  update(){
+    const db = wx.cloud.database()
+    db.collection('User').doc(this.data.xx._id).update({
+      data:{
+        ContactInformation: [
+          [
+            'QQ', this.data.QQ
+          ],
+          [
+            '手机号', this.data.PhoneNumber
+          ]
+        ],
+        StudentNumber: this.data.StudentNumber,
+        UserCollege: this.data.College[this.data.College_index],
+        UserName: this.data.UserName,
+        UserSpeciality: this.data.UserSpeciality,
+      },
+      success:res=> {
+        console.log("修改成功")
+        wx.navigateBack({
+          delta: 1,
+          success: function () {
+            wx.showToast({
+              title: '提交成功',
+            })
+          }
+        })
       }
     })
   },
   onLoad: function (options) {
-    var _this=this
-    var clubid = options._id
-    var membersum = options.membersum
-    this.setData({
-        Clubid:clubid,
-        Membersum:membersum,
-    }),
-      this.getOpenid();
+    this.getOpenid();
+    if(options.arr==[]){
+      this.setData({
+        xx:null
+      })
+    }
+    else{
+      var arr = JSON.parse(options.arr)
+      this.setData({
+        xx: arr
+      })
+    }
+  },
+  onShow:function(){
+    if(this.data.xx==null){
+
+    }
+    else{
+      var q = this.data.xx.ContactInformation[0][1]
+      var t = this.data.xx.ContactInformation[1][1]
+      this.setData({
+        src: this.data.xx.Photosrc,
+        UserName: this.data.xx.UserName,
+        Name: this.data.xx.UserName,
+        QQ: q,
+        qq: q,
+        PhoneNumber: t,
+        tel: t,
+        StudentNumber: this.data.xx.StudentNumber,
+        Nember: this.data.xx.StudentNumber,
+        UserSpeciality: this.data.xx.UserSpeciality,
+        coll: this.data.xx.UserSpeciality,
+      })
+    }
     
   },
   // 获取用户openid

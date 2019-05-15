@@ -17,7 +17,9 @@ exports.main = async (event, context) => {
 
     if (event.type == "update") {
       return await targetDB.doc(event.indexKey).update({
-        data: event.data
+        data: {
+           data:event.data
+        }
       })
     }
 

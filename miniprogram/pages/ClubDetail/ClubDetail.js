@@ -23,11 +23,12 @@ Page({
   },
   
   btn_Join_click: function () {
-    var membersum=this.data.membersum;
-    var _id=this.data.clubid;
-    wx.navigateTo({
-      url: '../ClubJoin/ClubJoin?_id=' + _id + '&membersum=' + membersum,
-    })//点击跳转
+    Add()
+    //var membersum=this.data.membersum;
+    //var _id=this.data.clubid;
+   // wx.navigateTo({
+    //  url: '../ClubJoin/ClubJoin?_id=' + _id + '&membersum=' + membersum,
+    //})//点击跳转
   },
   /**
    * 生命周期函数--监听页面加载
@@ -40,7 +41,25 @@ Page({
     })
     
   },
-
+  Add() {
+    wx.cloud.callFunction({
+      name: 'runDB',
+      data: {
+        type: "insert", //指定操作是insert  
+        db: "ClubApply", //指定操作的数据表
+        data: {
+          Useropenid: this.data.openid,
+          Club_id: this.data.Clubid,
+          read: false,
+        }
+      },
+      success: res => {
+      },
+      fail: err => {
+        console.error('[云函数] [insertDB] 增加Club失败', err)
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

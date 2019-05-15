@@ -146,6 +146,8 @@ Page({
           ,
           ClubName: this.data.clubname,
           CollegeID: this.data.College[this.data.College_index],
+          exist:false,
+          read:false,
         },
         success: res => {
           wx.navigateBack({

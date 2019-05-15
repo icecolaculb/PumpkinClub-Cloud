@@ -131,7 +131,9 @@ Page({
     const db = wx.cloud.database({
       env: 'testdemo-cba87d'
     })
-    db.collection('Club').get({
+    db.collection('Club').where({
+      exist:true
+    }).get({
       success: res => {
         this.setData({
           Club_list: res.data
