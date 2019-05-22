@@ -21,7 +21,7 @@
     <view class="weui-cell__ft weui-cell__ft_in-access"></view>
     </navigator>
 
-  <navigator url="../MyClub/MyClub" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+  <navigator url="{{mycluburl}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
     <view class="weui-cell__bd">我的社团</view>
     <view class="weui-cell__ft weui-cell__ft_in-access"></view>
     </navigator>
@@ -41,17 +41,8 @@
     <view class="weui-cell__ft weui-cell__ft_in-access"></view>
     </navigator>
 
-    <navigator url="../PM/PM" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <navigator url="{{PMurl}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
     <view class="weui-cell__bd">管理（社长）</view>
-    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-    </navigator>
-    <navigator url="../MCLC/MCLC" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-    <view class="weui-cell__bd">管理（院团委）</view>
-    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-    </navigator>
-
-    <navigator url="../MSYLC/MSYLC" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-    <view class="weui-cell__bd">管理（校团委）</view>
     <view class="weui-cell__ft weui-cell__ft_in-access"></view>
     </navigator>
 

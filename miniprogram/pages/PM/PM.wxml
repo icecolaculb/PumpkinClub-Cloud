@@ -12,7 +12,7 @@
       </view>
       <p class='weui-grid__label'>发布活动</p>
   </navigator>
-  <navigator url='' class='weui-grid'>
+  <navigator url='{{AEMLurl}}' class='weui-grid'>
       <view class='weui-grid__icon'>
         <image class='weui-grid__icon' src="../../Images/icon_tabbar.png" alt=""></image>
       </view>

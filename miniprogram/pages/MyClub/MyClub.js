@@ -17,13 +17,21 @@ Page({
     mark: 0,
     newmark: 0,
     istoright: true,
+    Club:[],
+    Club_list:[],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var _id= options._id
+    var Clubid = JSON.parse(options.Clubid)
+    this.setData({
+      id:_id,
+      Club_list:Clubid,
+    })
+    
   },
 
   /**
@@ -37,7 +45,22 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let club = this.data.Club_list
+    for (var index in club) {
+      const db = wx.cloud.database()
+      db.collection('Club').where({
+        _openid: club[index]
+      })
+        .get({
+          success: res => {
+            let Club1 = this.data.Club
+            Club1.push(res.data[0])
+            this.setData({
+              Club: Club1
+            })
+          }
+        })
+    }
   },
 
   /**

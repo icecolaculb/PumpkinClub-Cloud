@@ -12,9 +12,27 @@ Page({
     openid: '',
     text:'个人信息',
     xx:[],
+    _id:'',
     personurl:'',
+    PMurl:'',
+    mycluburl:'../MyClub/MyClub',
   },
-
+  // 获取用户openid
+  getOpenid() {
+    let that = this;
+    wx.cloud.callFunction({
+      name: 'getOpenID',
+      complete: res => {
+        var openid = res.result.openId;
+        that.setData({
+          openid: openid
+        })
+        this.setData({
+          PMurl: '../PM/PM?_openid=' + openid,
+        })
+      }
+    })
+  },
   onLoad: function () {
     if (!wx.cloud) {
       wx.redirectTo({
@@ -38,10 +56,12 @@ Page({
         }
       }
     })
-    
+    this.getOpenid();
+
   },
   onShow:function(){
     let _this = this
+    
     const db = wx.cloud.database()
     db.collection('User').where({
       _openid: this.data.openid,
@@ -52,46 +72,23 @@ Page({
           if(res.data.length==0){
             let arr1=[]
             this.setData({
-              personurl: '../ClubJoin/ClubJoin?arr='+arr1
+              personurl: '../ClubJoin/ClubJoin?arr='+arr1,
             })
-            console.log(this.data.personurl)
           }else{
             this.setData({
               xx: JSON.stringify(res.data[0]),
+              _id:res.data[0]._id,
             })
             let arr = this.data.xx;
+            let id = this.data._id
+            let Clubid = JSON.stringify(res.data[0].FavoriteClubID)
             this.setData({
-              personurl: '../ClubJoin/ClubJoin?arr=' + arr
+              personurl: '../ClubJoin/ClubJoin?arr=' + arr,
+              mycluburl:'../MyClub/MyClub?_id=' + id + '&Clubid='+Clubid,
             })
           }
         }
       })
-  },
-  onAdd: function () {
-    const db = wx.cloud.database()
-    db.collection('counters').add({
-      data: {
-        name: userInfo.name,
-      },
-      success: res => {
-        // 在返回结果中会包含新创建的记录的 _id
-        this.setData({
-          counterId: res._id,
-          name: userInfo.name
-        })
-        wx.showToast({
-          title: '新增记录成功',
-        })
-        console.log('[数据库] [新增记录] 成功，记录 _id: ', res._id)
-      },
-      fail: err => {
-        wx.showToast({
-          icon: 'none',
-          title: '新增记录失败'
-        })
-        console.error('[数据库] [新增记录] 失败：', err)
-      }
-    })
   },
 
   onGetUserInfo: function (e) {
@@ -110,7 +107,6 @@ Page({
       name: 'login',
       data: {},
       success: res => {
-        console.log('[云函数] [login] user openid: ', res.result.openid)
         app.globalData.openid = res.result.openid
         wx.navigateTo({
           url: '../userConsole/userConsole',

@@ -1,58 +1,13 @@
 <!--miniprogram/pages/MyClub/MyClub.wxml-->
-<view class='ClubDetail' bindtap='click_ClubDetail'>
-    <image class='url' mode="{{item.mode}}" src="{{src}}" ></image>
-    <view class='txt_Club'>
-      <view><text>冰可乐</text></view>
-      <view>发展方向为移动端开发</view>
-
-    </view>
-  </view>
-  <view class='ClubDetail' bindtap='click_ClubDetail'>
-    <image class='url' mode="{{item.mode}}" src='../../images/btn.png' ></image>
-    <view class='txt_Club'>
-      <view><text>其他不重要的社团</text></view>
-      <view>社团简介</view>
-    </view>
-  </view>
-  <view class='ClubDetail' bindtap='click_ClubDetail'>
-    <image class='url' mode="{{item.mode}}" src='../../images/btn.png' ></image>
-    <view class='txt_Club'>
-      <view><text>其他不重要的社团</text></view>
-      <view>社团简介</view>
-    </view>
-  </view>
-  <view class='ClubDetail' bindtap='click_ClubDetail'>
-    <image class='url' mode="{{item.mode}}" src='../../images/btn.png' ></image>
-    <view class='txt_Club'>
-      <view><text>其他不重要的社团</text></view>
-      <view>社团简介</view>
-    </view>
-  </view>
-  <view class='ClubDetail' bindtap='click_ClubDetail'>
-    <image class='url' mode="{{item.mode}}" src='../../images/btn.png' ></image>
-    <view class='txt_Club'>
-      <view><text>其他不重要的社团</text></view>
-      <view>社团简介</view>
-    </view>
-  </view>
-  <view class='ClubDetail' bindtap='click_ClubDetail'>
-    <image class='url' mode="{{item.mode}}" src='../../images/btn.png' ></image>
-    <view class='txt_Club'>
-      <view><text>其他不重要的社团</text></view>
-      <view>社团简介</view>
-    </view>
-  </view>
-  <view class='ClubDetail' bindtap='click_ClubDetail'>
-    <image class='url' mode="{{item.mode}}" src='../../images/btn.png' ></image>
-    <view class='txt_Club'>
-      <view><text>其他不重要的社团</text></view>
-      <view>社团简介</view>
-    </view>
-  </view>
-  <view class='ClubDetail' bindtap='click_ClubDetail'>
-    <image class='url' mode="{{item.mode}}" src='../../images/btn.png' ></image>
-    <view class='txt_Club'>
-      <view><text>其他不重要的社团</text></view>
-      <view>社团简介</view>
-    </view>
-  </view>
+<view bindtouchmove="tap_drag" bindtouchend="tap_end" bindtouchstart="tap_start" class="page-top {{open ? 'c-state1' : ''}}"> 
+          <block wx:for="{{Club}}" wx:for-item="cell" wx:key="index">
+            <view  data-id="{{index}}"  class='ClubDetail' bindtap='click_ToClubDetail'>
+             <image class='url' mode="{{item.mode}}" src="{{cell.ClubLogo}}" ></image>
+              <view class=''>
+                <view ><text class='txt_ClubName'>{{cell.ClubName}}</text> 
+                <view ><text>社团简介：{{cell.ClubIntroduction[0]+cell.ClubIntroduction[1]+cell.ClubIntroduction[2]}}</text> </view>
+                </view>
+              </view>
+            </view>
+          </block>
+    </view> 

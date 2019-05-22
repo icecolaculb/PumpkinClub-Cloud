@@ -119,14 +119,10 @@ Page({
     const db = wx.cloud.database()
       db.collection('User').add({
       data: {
-        ContactInformation: [
-          [
-            'QQ', this.data.QQ
-          ],
-          [
-            '手机号', this.data.PhoneNumber
-          ]
-        ],
+        ContactInformation: {
+          QQ: this.data.QQ,
+          tel: this.data.PhoneNumber
+        },
         FavoriteActivityID: [],
         FavoriteClubID: [],
         Photosrc: this.data.src,
@@ -137,7 +133,7 @@ Page({
       },
       success: res => {
         wx.navigateBack({
-          delta: 1,
+          delta: 2,
           success: function () {
             wx.showToast({
               title: '提交成功',
@@ -158,14 +154,10 @@ Page({
     const db = wx.cloud.database()
     db.collection('User').doc(this.data.xx._id).update({
       data:{
-        ContactInformation: [
-          [
-            'QQ', this.data.QQ
-          ],
-          [
-            '手机号', this.data.PhoneNumber
-          ]
-        ],
+        ContactInformation: {
+          QQ: this.data.QQ,
+          tel: this.data.PhoneNumber
+        },
         StudentNumber: this.data.StudentNumber,
         UserCollege: this.data.College[this.data.College_index],
         UserName: this.data.UserName,
@@ -203,16 +195,14 @@ Page({
 
     }
     else{
-      var q = this.data.xx.ContactInformation[0][1]
-      var t = this.data.xx.ContactInformation[1][1]
       this.setData({
         src: this.data.xx.Photosrc,
         UserName: this.data.xx.UserName,
         Name: this.data.xx.UserName,
-        QQ: q,
-        qq: q,
-        PhoneNumber: t,
-        tel: t,
+        QQ: this.data.xx.ContactInformation.QQ,
+        qq: this.data.xx.ContactInformation.QQ,
+        PhoneNumber: this.data.xx.ContactInformation.tel,
+        tel: this.data.xx.ContactInformation.tel,
         StudentNumber: this.data.xx.StudentNumber,
         Nember: this.data.xx.StudentNumber,
         UserSpeciality: this.data.xx.UserSpeciality,
@@ -270,29 +260,7 @@ Page({
         wx.hideLoading()
       }
     })
-
       
-    },
-    gotoShow: function () {
-      var _this = this
-      wx.chooseImage({
-        count: 9, // 最多可以选择的图片张数，默认9
-        sizeType: ['compressed'], // original 原图，compressed 压缩图，默认二者都有
-        sourceType: ['album'], // album 从相册选图，camera 使用相机，默认二者都有
-        success: function (res) {
-          // success
-          console.log(res)
-          _this.setData({
-            src: res.tempFilePaths
-          })
-        },
-        fail: function () {
-          // fail
-        },
-        complete: function () {
-          // complete
-        }
-      })
     },
     
   

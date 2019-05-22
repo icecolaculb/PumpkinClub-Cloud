@@ -18,18 +18,35 @@ Page({
     Clubuserinformation:'',
     ClubCollege:'',
     ClubLogo:'',
-    clubid:'',
-    membersum:'',
+    clubopenid:'',
+    openid:'',
+    Length:'',
+    xx:[],//用户个人信息
   },
   
   btn_Join_click: function () {
-    Add()
-    //var membersum=this.data.membersum;
-    //var _id=this.data.clubid;
-   // wx.navigateTo({
-    //  url: '../ClubJoin/ClubJoin?_id=' + _id + '&membersum=' + membersum,
-    //})//点击跳转
+    if(this.data.Length==0){
+      wx.showModal({
+        title: '提醒',
+        content: '请先填写个人信息',
+        cancelText:'关闭',
+        confirmText:'前往填写',
+        success(res){
+          if (res.confirm) {
+            let arr1 = []
+            wx.navigateTo({
+              url: '../ClubJoin/ClubJoin?arr=' + arr1,
+            })
+          }
+        }
+      })
+    }
+    else{
+      this.Add();
+    }
+    
   },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -39,7 +56,7 @@ Page({
     this.setData({
       club:arr
     })
-    
+    this.getOpenid();
   },
   Add() {
     wx.cloud.callFunction({
@@ -48,18 +65,58 @@ Page({
         type: "insert", //指定操作是insert  
         db: "ClubApply", //指定操作的数据表
         data: {
-          Useropenid: this.data.openid,
-          Club_id: this.data.Clubid,
-          read: false,
+          Userid:this.data.xx._id,
+          Name:this.data.xx.UserName,
+          qq:this.data.xx.ContactInformation.QQ,
+          tel:this.data.xx.ContactInformation.tel,
+          StudentNumber:this.data.xx.StudentNumber,
+          College: this.data.xx.UserCollege,
+          Speciality: this.data.xx.UserSpeciality,
+          Photosrc: this.data.xx.Photosrc,
+          Clubopenid: this.data.clubopenid,
+          Club_id:this.data.club._id,
+          exist:false,
         }
       },
       success: res => {
+        wx.showToast({
+          title: '请等待社长审核',
+        })
       },
       fail: err => {
         console.error('[云函数] [insertDB] 增加Club失败', err)
       }
     })
   },
+  Get(){
+    const db = wx.cloud.database()
+    db.collection('User').where({
+      _openid: this.data.clubopenid,
+    }).get({
+      success: res => {
+        console.log(res.data)
+        this.setData({
+          Length:res.data.length,
+          xx:res.data[0]
+        })
+        console.log(this.data.Length)
+      }
+    })
+  },
+  // 获取用户openid
+  getOpenid() {
+    let that = this;
+    wx.cloud.callFunction({
+      name: 'getOpenID',
+      complete: res => {
+        var openid = res.result.openId;
+        that.setData({
+          openid: openid
+        })
+      }
+    })
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -70,9 +127,10 @@ Page({
       ClubIntroduction: this.data.club.ClubIntroduction,
       Clubuserinformation: this.data.club.ClubMember,
       ClubCollege: this.data.club.CollegeID,
-      clubid:this.data.club._id,
-      membersum:this.data.club.ClubMember[0][0][1],
-    })
+      clubopenid:this.data.club._openid,
+    });
+    this.Get();
+
   },
 
   /**

@@ -103,23 +103,11 @@ Page({
           ClubLogo: this.data.src,
           Clubchapter: this.data.chaptersrc,
           ClubMember: [
-            [
-              [
-                '用户编号', 1
-              ],
-              [
-                '姓名', this.data.clubusername
-              ],
-              [
-                '性别', this.data.usex[this.data.usex_index]
-              ],
-              [
-                '职位', '社长'
-              ],
-              [
-                '联系方式', this.data.clubuserinformation
-              ]
-            ]
+              {
+                userid:1,
+                username: this.data.clubusername,
+                userpost: '社长',
+              }
           ],
           Activity: [
             [
