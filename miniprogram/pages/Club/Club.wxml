@@ -2,9 +2,9 @@
 <view class="page"> 
     <view class="page-bottom"> 
         <view class="page-content"> 
-          <block wx:for="{{College}}" wx:for-item="cell" wx:key="index">
+          <block wx:for="{{College}}" wx:for-item="college" wx:key="index">
             <view class='wc' data-index="{{index}}" bindtap='click_Club'>
-              <text>{{cell.CollegeName}}</text> 
+              <text>{{college.CollegeName}}</text> 
             </view>
           </block>
         </view> 

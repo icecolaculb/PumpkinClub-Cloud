@@ -108,7 +108,16 @@ Page({
 
     btn_Join_Click: function () {
       if(this.data.xx==null){
-        this.onAdd()
+        if (this.data.UserName == '' || this.data.StudentNumber == '' || this.data.QQ == '' || this.data.PhoneNumber == '' || this.data.UserSpeciality==''){
+          wx.showToast({
+            title: '信息不能为空',
+            icon:'loading',
+          })
+        }
+        else{
+          this.onAdd()
+          
+        }
       }
       else{
         this.update()
@@ -136,7 +145,7 @@ Page({
           delta: 2,
           success: function () {
             wx.showToast({
-              title: '提交成功',
+              title: '填写成功',
             })
           }
         })

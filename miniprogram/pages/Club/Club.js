@@ -45,6 +45,7 @@ Page({
         { CollegeName: "建筑学院", }
       ],
   },
+  
     click_ToClubDetail: function (e) {
       var id = e.currentTarget.dataset.id;
       let club_list=JSON.stringify(this.data.Club_list[id])
@@ -52,10 +53,28 @@ Page({
         url: '../ClubDetail/ClubDetail?Club='+club_list,
       })//点击跳转
     },
-    click_Club: function () {
-      wx.navigateTo({
-        url: '',
+    click_Club: function (e) {
+      var index = e.currentTarget.dataset.index;
+      var college = this.data.College[index].CollegeName
+    if(index!=0){
+      var _this = this;
+      const db = wx.cloud.database({
+        env: 'testdemo-cba87d'
       })
+      db.collection('Club').where({
+        CollegeID: college,
+        exist: true
+      }).get({
+        success: res => {
+          this.setData({
+            Club_list: res.data
+          })
+        }
+      })
+    }
+    else{
+      this.getallclub()
+    }
     },
     tap_ch: function (e) {
       if (this.data.open) {
@@ -126,22 +145,25 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    //创建一个变量来保存页面Page示例中的this,方便后续使用
-    var _this = this;
-    const db = wx.cloud.database({
-      env: 'testdemo-cba87d'
-    })
-    db.collection('Club').where({
-      exist:true
-    }).get({
-      success: res => {
-        this.setData({
-          Club_list: res.data
-        })
-      }
-    })
+    
+   this.getallclub()
   },
-
+getallclub(){
+  //创建一个变量来保存页面Page示例中的this,方便后续使用
+  var _this = this;
+  const db = wx.cloud.database({
+    env: 'testdemo-cba87d'
+  })
+  db.collection('Club').where({
+    exist: true
+  }).get({
+    success: res => {
+      this.setData({
+        Club_list: res.data
+      })
+    }
+  })
+},
   /**
    * 生命周期函数--监听页面隐藏
    */

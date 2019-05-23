@@ -39,7 +39,6 @@ Page({
         var clubID = this.data.clubid
         clubID.push(this.data._openid)
         app.favoriteclubid=clubID
-        console.log(app.favoriteclubid)
       }
     })
     wx.navigateTo({
@@ -68,7 +67,22 @@ Page({
       success: res => {
         this.setData({
           user_list:res.result.data
+          
         })
+        var list=this.data.user_list
+        var arr=[]
+        arr.push(list[0])
+        for (var i in list) {
+          for(var index in arr){
+            if ( arr[index].Userid != (list[i].Userid)){
+           
+              arr.push(list[i])
+           }
+          }
+         this.setData({
+           user_list:arr
+         })
+        }
       },
       fail: err => {
         console.error('[云函数] [insertDB] 增加Subject失败', err)
@@ -117,7 +131,6 @@ Page({
       }
     })
   },
-
   /**
    * 生命周期函数--监听页面隐藏
    */
