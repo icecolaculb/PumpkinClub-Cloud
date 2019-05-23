@@ -25,24 +25,40 @@ Page({
   },
   
   btn_Join_click: function () {
-    if(this.data.Length==0){
-      wx.showModal({
-        title: '提醒',
-        content: '请先填写个人信息',
-        cancelText:'关闭',
-        confirmText:'前往填写',
-        success(res){
-          if (res.confirm) {
-            let arr1 = []
-            wx.navigateTo({
-              url: '../ClubJoin/ClubJoin?arr=' + arr1,
-            })
-          }
-        }
+    var xxid=this.data.xx._id
+    var memberid=this.data.club.ClubMember
+    var exist=false
+    for(var i in memberid){
+      if(memberid[i].userid==xxid){
+        exist=true
+      }
+    }
+    if(exist==true){
+      wx.showToast({
+        title: '你已加入该社团',
+        icon:'loading'
       })
     }
     else{
-      this.Add();
+      if (this.data.Length == 0) {
+        wx.showModal({
+          title: '提醒',
+          content: '请先填写个人信息',
+          cancelText: '关闭',
+          confirmText: '前往填写',
+          success(res) {
+            if (res.confirm) {
+              let arr1 = []
+              wx.navigateTo({
+                url: '../ClubJoin/ClubJoin?arr=' + arr1,
+              })
+            }
+          }
+        })
+      }
+      else {
+        this.Add();
+      }
     }
     
   },
