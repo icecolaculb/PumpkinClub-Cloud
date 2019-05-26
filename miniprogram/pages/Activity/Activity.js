@@ -17,56 +17,13 @@ Page({
       mark: 0,
       newmark: 0,
       istoright: true,
-      Activity: [
-        {
-          ActivityName: "死命肝",
-          ActivityDetail: "死命肝的简介",
-          src: "../../images/1.jpg",
-
-        },
-        {
-          ActivityName: "活动A",
-          ActivityDetail: "活动A的简介",
-          src: "../../images/1.jpg",
-
-        },
-        {
-          ActivityName: "活动B",
-          ActivityDetail: "活动B的简介",
-          src: "../../images/1.jpg",
-
-        },
-        {
-          ActivityName: "活动C",
-          ActivityDetail: "活动C的简介",
-          src: "../../images/1.jpg",
-
-        },
-        {
-          ActivityName: "活动D",
-          ActivityDetail: "活动D的简介",
-          src: "../../images/1.jpg",
-        },
-        {
-          ActivityName: "活动E",
-          ActivityDetail: "活动E的简介",
-          src: "../../images/1.jpg",
-        },
-        {
-          ActivityName: "活动F",
-          ActivityDetail: "活动F的简介",
-          src: "../../images/1.jpg",
-        },
-        {
-          ActivityName: "活动G",
-          ActivityDetail: "活动G的简介",
-          src: "../../images/1.jpg",
-        }
-      ],
+      
   },
-  click_ToActivityDetail: function () {
+  click_ToActivityDetail: function (e) {
+    var id = e.currentTarget.dataset.id;
+    let activity = JSON.stringify(this.data.Activity_list[id])
     wx.navigateTo({
-      url: '../ActivityDetail/ActivityDetail',
+      url: '../ActivityDetail/ActivityDetail?activity='+activity,
     })//点击跳转
   },
 
@@ -81,7 +38,18 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    //创建一个变量来保存页面Page示例中的this,方便后续使用
+    var _this = this;
+    const db = wx.cloud.database({
+      env: 'testdemo-cba87d'
+    })
+    db.collection('ActivityApply').get({
+      success: res => {
+        this.setData({
+          Activity_list: res.data
+        })
+      }
+    })
   },
 
   /**

@@ -1,4 +1,4 @@
-// miniprogram/pages/MyActivity/MyActivity.js
+// miniprogram/pages/Activitymanage/Activitymanage.js
 var app=getApp()
 Page({
 
@@ -6,46 +6,50 @@ Page({
    * 页面的初始数据
    */
   data: {
+    
+  },
+  Add:function(){
+    wx.navigateTo({
+      url: '../EP/EP',
+    })
+  },
+  Update: function () {
 
   },
+  Delete: function () {
 
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     
   },
-
+getactivitylist(){
+  const db = wx.cloud.database()
+  db.collection('ActivityAply').where({
+    Clubopenid: app.OPENID
+  })
+    .get({
+      success: res => {
+        this.setData({
+          Activity_list: res.data
+        })
+      }
+    })
+},
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    let a_id = app.ACTIVITYID
-    let list=[]
-    for (var i in a_id){
-      console.log(a_id[i])
-      const db = wx.cloud.database({
-        env: 'testdemo-cba87d'
-      })
-      db.collection('ActivityApply').doc(a_id[i])
-      .get({
-        success: res => {
-          console.log(res.data)
-          list.unshift(res.data)
-          this.setData({
-            Activity_list: list
-          })
-        }
-      })
-    }
-    
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getactivitylist()
   },
 
   /**

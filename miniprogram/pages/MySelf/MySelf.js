@@ -57,7 +57,20 @@ Page({
       }
     })
     this.getOpenid();
-
+//创建一个变量来保存页面Page示例中的this,方便后续使用
+    var _this = this;
+    const db = wx.cloud.database({
+      env: 'testdemo-cba87d'
+    })
+    db.collection('User').where({
+      _openid:app.OPENID
+    }).get({
+      success: res => {
+        this.setData({
+          Activityid: res.data[0].FavoriteActivityID
+        })
+      }
+    })
   },
   onShow:function(){
     let _this = this
@@ -89,6 +102,7 @@ Page({
           }
         }
       })
+    this.getfavoriteid()
   },
 
   onGetUserInfo: function (e) {
@@ -120,4 +134,20 @@ Page({
       }
     })
   },
+  getfavoriteid() {
+    //创建一个变量来保存页面Page示例中的this,方便后续使用
+    var _this = this;
+    const db = wx.cloud.database({
+      env: 'testdemo-cba87d'
+    })
+    db.collection('User').where({
+      _openid: app.OPENID
+    }).get({
+      success: res => {
+        app.ACTIVITYID= res.data[0].FavoriteActivityID
+        
+      }
+    })
+  }
 })
+

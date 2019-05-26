@@ -1,6 +1,6 @@
 // miniprogram/pages/Club/Club.js
+var app = getApp()
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -45,7 +45,17 @@ Page({
         { CollegeName: "建筑学院", }
       ],
   },
-  
+  // 获取用户openid
+  getOpenid() {
+    let that = this;
+    wx.cloud.callFunction({
+      name: 'getOpenID',
+      complete: res => {
+        var openid = res.result.openId;
+        app.OPENID = openid
+      }
+    })
+  },
     click_ToClubDetail: function (e) {
       var id = e.currentTarget.dataset.id;
       let club_list=JSON.stringify(this.data.Club_list[id])
@@ -131,7 +141,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    this.getOpenid()
   },
 
   /**

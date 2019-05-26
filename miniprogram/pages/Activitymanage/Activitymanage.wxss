@@ -1,0 +1,39 @@
+/* miniprogram/pages/Activitymanage/Activitymanage.wxss */
+.container {
+  background-color: #F2f2f2;
+}
+.ActivityDetail{
+  width: 100%;
+  height: 100px;
+  display: flex;
+  border:1px solid rgba(22, 86, 158, 0.164);
+}
+.url{
+  width: 100px;
+  height: 100px; 
+  background-color: #eeeeee;
+}
+.txt_Activity{
+ width: 100%-100px;
+ height: 100px;
+ display: block;
+}
+.btn_Add{
+  position: fixed;
+  bottom: 0;
+  width:100%;
+  display: inline-block;
+  height: 2.58823529em;
+  padding: 0 0.6em 0 0.7em;
+  border-left: 1px solid #E5E5E5;
+  line-height: 2.58823529em;
+  font-size: 17px;
+  color: #3CC51F;
+  white-space: nowrap;
+}
+.view_button{
+   width:100%;
+  display: inline-block;
+  height: 2.58823529em;
+  padding: 0 0.6em 0 0.7em;
+}

@@ -1,6 +1,8 @@
 //app.js
 App({
   favoriteclubid:[],
+  OPENID:'',
+  ACTIVITYID:'',
   onLaunch: function () {
     
     if (!wx.cloud) {

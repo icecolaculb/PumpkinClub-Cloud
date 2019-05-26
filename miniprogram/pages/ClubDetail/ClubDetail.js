@@ -23,7 +23,12 @@ Page({
     Length:'',
     xx:[],//用户个人信息
   },
-  
+  btn_Activity_click:function(){
+    var openid = this.data.clubopenid
+    wx.navigateTo({
+      url: '../Club_Activity/Club_Activity?openid='+openid,
+    })
+  },
   btn_Join_click: function () {
     var xxid=this.data.xx._id
     var memberid=this.data.club.ClubMember
@@ -33,33 +38,34 @@ Page({
         exist=true
       }
     }
-    if(exist==true){
-      wx.showToast({
-        title: '你已加入该社团',
-        icon:'loading'
+    if (this.data.Length == 0) {
+      wx.showModal({
+        title: '提醒',
+        content: '请先填写个人信息',
+        cancelText: '关闭',
+        confirmText: '前往填写',
+        success(res) {
+          if (res.confirm) {
+            let arr1 = []
+            wx.navigateTo({
+              url: '../ClubJoin/ClubJoin?arr=' + arr1,
+            })
+          }
+        }
       })
     }
-    else{
-      if (this.data.Length == 0) {
-        wx.showModal({
-          title: '提醒',
-          content: '请先填写个人信息',
-          cancelText: '关闭',
-          confirmText: '前往填写',
-          success(res) {
-            if (res.confirm) {
-              let arr1 = []
-              wx.navigateTo({
-                url: '../ClubJoin/ClubJoin?arr=' + arr1,
-              })
-            }
-          }
+    else {
+      if (exist == true) {
+        wx.showToast({
+          title: '你已加入该社团',
+          icon: 'loading'
         })
       }
       else {
         this.Add();
       }
     }
+    
     
   },
 

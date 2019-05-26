@@ -30,7 +30,9 @@
     "pages/MyInform/MyInform",
     "pages/MySelf/MySelf",
     "pages/PM/PM",
-    "pages/PNS/PNS"
+    "pages/PNS/PNS",
+    "pages/Club_Activity/Club_Activity",
+    "pages/Activitymanage/Activitymanage"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

@@ -18,8 +18,15 @@
 <view class='others'>
   <text>所属学院：</text><text>{{ClubCollege}}</text>
 </view>
-<view class='view_button'></view>
-<view>
-  <button class='btn_Detail' bindtap='btn_Join_click'>加入社团</button>
+<view >
+
+  <view>
+    <button class='btn_Detail_activity' bindtap='btn_Activity_click'>社团活动</button>
+
+   </view>
+<view class='btn_fa'>
+    <button class='btn_Detail_join' bindtap='btn_Join_click'>加入社团</button>
+</view>
+
 </view>
 </view>

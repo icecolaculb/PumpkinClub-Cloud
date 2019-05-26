@@ -1,29 +1,29 @@
 <!--miniprogram/pages/ActivityDetail/ActivityDetail.wxml-->
 <view>
-<image class='img_ActivityDetail' mode="{{item.mode}}" src="{{src}}" ></image>
+<image class='img_ActivityDetail' mode="{{item.mode}}" src="{{activity.src}}" ></image>
 <view class='view_ActivityName'>
-  <text class='txt_ActivityName'>死命肝</text>
+  <text class='txt_ActivityName'>{{activity.ActivityName}}</text>
 </view>
 <view class='line'></view>
 <view>
   <text class='txt_ActivityProfile'>活动简介：</text>
 </view>
 <view>
-  <text class='txt_Profiles'> 冰可乐社团创立之初，为了赶上社团参加的第一个比赛的交稿日期，会长祝一淮发起了“死命肝”活动，一天到晚开始催他可爱的小伙伴们码代码，只要码不“死”，就往“死”里码，而成员们也被迫参加了这次活动，阳奉阴违，表面很认真很勤奋，实际上，更“认真”更“勤奋”，为了我们有一个好的开始，为了我们第一个荣耀加油吧！！！</text>
+  <text class='txt_Profiles'> {{activity.ActivityIntroduction}}</text>
 </view>
 <view class='others'>
   <text>活动时间:</text>
-  <text>4.12至很久以后</text>
+  <text>{{activity.ActivityStartTime}}--{{activity.ActivityEndTime}}</text>
 </view>
 <view class='others'>
   <text>发起社团:</text>
-  <text>冰可乐</text>
+  <text>{{club.ClubName}}</text>
 </view>
 <view class='others'>
-  <text>社团规模：</text><text>院级</text>
+  <text>社团所属：</text><text>{{club.CollegeID}}</text>
 </view>
 <view class='view_button'></view>
 <view>
-  <button class='btn_Detail' bindtap='btn_Join_click'>关注活动</button>
+  <button class='btn_Detail' bindtap='btn_Join_click'>想参加</button>
 </view>
 </view>

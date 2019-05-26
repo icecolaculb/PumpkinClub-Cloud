@@ -1,5 +1,4 @@
-<!--miniprogram/pages/MyActivity/MyActivity.wxml-->
-  
+<!--miniprogram/pages/Activitymanage/Activitymanage.wxml-->
 <view >
   <block wx:for="{{Activity_list}}" wx:for-item="cell" wx:key="index">
       <view  data-id="{{index}}"  class='ActivityDetail' bindtap='click_ToActivityDetail'>
@@ -7,9 +6,14 @@
           <view class='txt_Activity'>
             <view ><text class='txt_ClubName'>{{cell.ActivityName}}</text> 
             <view ><text>活动简介：{{cell.ActivityDetail}}</text> </view>
+            
             </view>
+            
           </view>
       </view>
+      <button bindtap='Update'>修改</button>
+      <button bindtap='Delete'>删除</button>
   </block>
-  
+  <view class='view_button'></view>
+  <button class='btn_Add' bindtap='Add'>发布活动</button>
 </view>

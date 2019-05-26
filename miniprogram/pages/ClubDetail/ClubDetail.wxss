@@ -22,16 +22,49 @@
 .others{
   text-align: right;
 }
-.btn_Detail{
+
+.btn_Detail_activity{
   position: fixed;
   bottom: 0;
-  width:100%;
+  width:33%;
   display: inline-block;
   height: 2.58823529em;
   padding: 0 0.6em 0 0.7em;
   border-left: 1px solid #E5E5E5;
   line-height: 2.58823529em;
-  vertical-align: middle;
+  font-size: 17px;
+  color: #3CC51F;
+  white-space: nowrap;
+}
+.btn_Detail{
+  position: fixed;
+  bottom: 0;
+  width:50%;
+  display: inline-block;
+  height: 2.58823529em;
+  padding: 0 0.6em 0 0.7em;
+  border-left: 1px solid #E5E5E5;
+  line-height: 2.58823529em;
+  font-size: 17px;
+  color: #3CC51F;
+  white-space: nowrap;
+}
+.btn_fa{
+  position: fixed;
+  bottom: 0;
+  width:100%;
+  display:flex;
+  justify-content:space-around;
+}
+.btn_Detail_join{
+  position: fixed;
+  bottom: 0;
+  width:33%;
+  display: inline-block;
+  height: 2.58823529em;
+  padding: 0 0.6em 0 0.7em;
+  border-left: 1px solid #E5E5E5;
+  line-height: 2.58823529em;
   font-size: 17px;
   color: #3CC51F;
   white-space: nowrap;
