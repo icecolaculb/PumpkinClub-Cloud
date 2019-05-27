@@ -41,11 +41,6 @@
     <view class="weui-cell__ft weui-cell__ft_in-access"></view>
     </navigator>
 
-    <navigator url="../Application/Application" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-    <view class="weui-cell__bd">权限申请</view>
-    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-    </navigator>
-
     <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
     <view class="weui-cell__bd">开发人员</view>
     <view class="weui-cell__ft weui-cell__ft_in-access"></view>

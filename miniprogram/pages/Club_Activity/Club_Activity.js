@@ -8,7 +8,13 @@ Page({
   data: {
 
   },
-
+  click_ToActivityDetail: function (e) {
+    var id = e.currentTarget.dataset.id;
+    let activity = JSON.stringify(this.data.Activity_list[id])
+    wx.navigateTo({
+      url: '../ActivityDetail/ActivityDetail?activity=' + activity,
+    })//点击跳转
+  },
   /**
    * 生命周期函数--监听页面加载
    */

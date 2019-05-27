@@ -1,9 +1,0 @@
-<!--miniprogram/pages/ACLCML/ACLCML.wxml-->
-<view class="weui-cells weui-cells_after-title">
-    <view class="weui-cell weui-cell_access" catchtap="jumpToACLC">
-        <view class="weui-cell__bd">XX院申请</view>
-        <view class="weui-cell__ft weui-cell__ft_in-access" style="font-size: 0">
-            <view style="display: inline-block;vertical-align:middle; font-size: 17px;">申请人</view>
-        </view>
-     </view>
-</view>

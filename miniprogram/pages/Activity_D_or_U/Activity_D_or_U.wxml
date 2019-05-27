@@ -1,0 +1,49 @@
+<!--miniprogram/pages/Activity_D_or_U/Activity_D_or_U.wxml-->
+<view class='contain'>
+  <view class='photo'>
+      <view>
+          <image class='url' mode="{{item.mode}}" src="{{src}}" bindtap="gotoShow"></image>
+      </view>
+       <view><label >请上传活动logo</label></view>
+  </view>
+
+  <view class="weui-cell">
+      <view class="weui-cell__hd"><label class="weui-label">活动名称</label></view>
+      <view class="weui-cell__bd">
+           <input  class="weui-input" name='ActivityName' bindinput='ActivityNameInput' value='{{ActivityName}}'/>
+      </view>
+  </view>
+
+  <view class="weui-cell">
+      <view class="weui-cell__hd"><label class="weui-label">活动开始时间:</label></view>
+      <view class="weui-cell__bd">
+           <input class="weui-input" name='ActivityStartTime' bindinput='ActivityStartTime' value='{{ActivityStartTime}}'/>
+      </view>
+  </view>
+
+  <view class="weui-cell">
+      <view class="weui-cell__hd"><label class="weui-label">活动结束时间:</label></view>
+      <view class="weui-cell__bd">
+           <input class="weui-input" name='ActivityEndTime' bindinput='ActivityEndTimeInput' value='{{ActivityEndTime}}'/>
+      </view>
+  </view>
+
+  <view class="page-section">
+  <view class="weui-cell__hd"><label >活动简介</label></view>
+    <view class="textarea-wrp">
+      <textarea bindinput="ActivityIntroduction" auto-height='true' name='ActivityIntroduction'  value='{{ActivityIntroduction}}'/>
+    </view>
+  </view>
+
+  <view class='view_button'></view>
+  <view>
+  <button class='btn_Join' bindtap='btn_Update_Click'>提交修改</button>
+  </view>
+  <view class='btn_fa'>
+    <button class='btn_Join' bindtap='btn_Delete_Click'>删除</button>
+  </view>
+</view>
+
+
+
+

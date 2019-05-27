@@ -58,7 +58,6 @@ Page({
     this.setData({
       activity: arr
     })
-    // 查询
     
   },
 

@@ -23,14 +23,12 @@ Page({
     let a_id = app.ACTIVITYID
     let list=[]
     for (var i in a_id){
-      console.log(a_id[i])
       const db = wx.cloud.database({
         env: 'testdemo-cba87d'
       })
       db.collection('ActivityApply').doc(a_id[i])
       .get({
         success: res => {
-          console.log(res.data)
           list.unshift(res.data)
           this.setData({
             Activity_list: list
