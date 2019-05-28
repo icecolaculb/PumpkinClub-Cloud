@@ -145,6 +145,7 @@ Page({
       Clubuserinformation: this.data.club.ClubMember,
       ClubCollege: this.data.club.CollegeID,
       clubopenid: this.data.club._openid,
+      clubopenid: this.data.club._openid,
       ClubInformations: this.data.club.ClubInformations,
     });
     this.Get();
