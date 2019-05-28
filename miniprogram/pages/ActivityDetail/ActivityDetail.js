@@ -13,10 +13,10 @@ Page({
       mode: 'center',
       text: 'center：不缩放图片，只显示图片的中间区域',
     }],
-    src: '../../images/1.jpg'
+    src: '../../images/1.jpg',
   },
   btn_Join_click: function () {
-    if (this.data.user==[]) {
+    if (this.data.user==null) {
       wx.showModal({
         title: '提醒',
         content: '请先填写个人信息',
