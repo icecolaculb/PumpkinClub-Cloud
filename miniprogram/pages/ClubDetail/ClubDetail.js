@@ -143,15 +143,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.setData({
-      ClubLogo: this.data.club.ClubLogo,
-      ClubName: this.data.club.ClubName,
-      ClubIntroduction: this.data.club.ClubIntroduction,
-      Clubuserinformation: this.data.club.ClubMember,
-      ClubCollege: this.data.club.CollegeID,
-      clubopenid:this.data.club._openid,
-    });
-    this.Get();
+    
 
   },
 
@@ -159,7 +151,15 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      ClubLogo: this.data.club.ClubLogo,
+      ClubName: this.data.club.ClubName,
+      ClubIntroduction: this.data.club.ClubIntroduction,
+      Clubuserinformation: this.data.club.ClubMember,
+      ClubCollege: this.data.club.CollegeID,
+      clubopenid: this.data.club._openid,
+    });
+    this.Get();
   },
 
   /**
