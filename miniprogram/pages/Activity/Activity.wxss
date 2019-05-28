@@ -1,6 +1,6 @@
 /* miniprogram/pages/Activity/Activity.wxss */
 .container {
-  background-color: #F2f2f2;
+
 }
 .ActivityDetail{
   width: 100%;

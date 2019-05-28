@@ -1,12 +1,11 @@
 // miniprogram/pages/PM/PM.js
+var app=getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    openid:'',
-    AEMLurl:'',
   },
  
 
@@ -14,10 +13,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var openid = options._openid
-    this.setData({
-        openid:openid
-    })
+   
   },
 
   /**
@@ -31,10 +27,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var openid=this.data.openid
-    this.setData({
-      AEMLurl: '../AEML/AEML?_openid=' + openid 
-    })
+    
   },
 
   /**

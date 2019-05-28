@@ -109,31 +109,9 @@ Page({
                 userpost: '社长',
               }
           ],
-          Activity: [
-            [
-              [
-                '活动编号', 0
-              ],
-              [
-                '活动名称','活动名称'
-              ],
-              [
-                '具体内容文件', '真正的内容'
-              ],
-              [
-                '发布时间', '2019-1-1'
-              ],
-              [
-                '截至时间', '2019-2-2'
-              ],
-              [
-                '排序优先度','111'
-              ]
-            ]
-          ]
-          ,
           ClubName: this.data.clubname,
           CollegeID: this.data.College[this.data.College_index],
+          ClubInformations: this.data.clubuserinformation,
           exist:false,
           read:false,
         },

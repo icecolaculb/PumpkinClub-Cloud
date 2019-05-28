@@ -17,7 +17,7 @@ Page({
       mark: 0,
       newmark: 0,
       istoright: true,
-      
+    ActivityIntroduction:'',
   },
   click_ToActivityDetail: function (e) {
     var id = e.currentTarget.dataset.id;

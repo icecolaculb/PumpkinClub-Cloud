@@ -16,7 +16,7 @@
              <image class='url' mode="{{item.mode}}" src="{{cell.ClubLogo}}" ></image>
               <view class=''>
                 <view ><text class='txt_ClubName'>{{cell.ClubName}}</text> 
-                <view ><text>社团简介：{{cell.ClubIntroduction[0]+cell.ClubIntroduction[1]+cell.ClubIntroduction[2]}}</text> </view>
+                <view ><text>社团简介：{{cell.ClubIntroduction[0]+cell.ClubIntroduction[1]+cell.ClubIntroduction[2]+cell.ClubIntroduction[3]+cell.ClubIntroduction[4]}}...</text> </view>
                 </view>
               </view>
             </view>

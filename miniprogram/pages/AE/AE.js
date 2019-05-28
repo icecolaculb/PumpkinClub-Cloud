@@ -21,10 +21,8 @@ Page({
   onLoad: function (options) {
     var _this = this
     var arr = JSON.parse(options.user)
-    var openid= options._openid
     this.setData({
       user: arr,
-      openid:openid,
     })
   },
   

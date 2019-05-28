@@ -1,5 +1,5 @@
 <!--miniprogram/pages/MyClub/MyClub.wxml-->
-<view bindtouchmove="tap_drag" bindtouchend="tap_end" bindtouchstart="tap_start" class="page-top {{open ? 'c-state1' : ''}}"> 
+<view>
           <block wx:for="{{Club}}" wx:for-item="cell" wx:key="index">
             <view  data-id="{{index}}"  class='ClubDetail' bindtap='click_ToClubDetail'>
              <image class='url' mode="{{item.mode}}" src="{{cell.ClubLogo}}" ></image>

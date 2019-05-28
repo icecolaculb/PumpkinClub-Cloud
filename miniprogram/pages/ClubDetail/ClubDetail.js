@@ -1,4 +1,5 @@
 // miniprogram/pages/ClubDetail/ClubDetail.js
+var app=getApp()
 Page({
 
   /**
@@ -19,14 +20,14 @@ Page({
     ClubCollege:'',
     ClubLogo:'',
     clubopenid:'',
-    openid:'',
+    ClubInformations:'',
     Length:'',
     xx:[],//用户个人信息
   },
   btn_Activity_click:function(){
     var openid = this.data.clubopenid
     wx.navigateTo({
-      url: '../Club_Activity/Club_Activity?openid='+openid,
+      url: '../Club_Activity/Club_Activity?openid=' + openid,
     })
   },
   btn_Join_click: function () {
@@ -78,8 +79,8 @@ Page({
     this.setData({
       club:arr
     })
-    this.getOpenid();
   },
+
   Add() {
     wx.cloud.callFunction({
       name: 'runDB',
@@ -110,30 +111,16 @@ Page({
       }
     })
   },
+
   Get(){
     const db = wx.cloud.database()
     db.collection('User').where({
-      _openid: this.data.clubopenid,
+      _openid: app.OPENID,
     }).get({
       success: res => {
-        console.log(res.data)
         this.setData({
           Length:res.data.length,
           xx:res.data[0]
-        })
-        console.log(this.data.Length)
-      }
-    })
-  },
-  // 获取用户openid
-  getOpenid() {
-    let that = this;
-    wx.cloud.callFunction({
-      name: 'getOpenID',
-      complete: res => {
-        var openid = res.result.openId;
-        that.setData({
-          openid: openid
         })
       }
     })
@@ -143,15 +130,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.setData({
-      ClubLogo: this.data.club.ClubLogo,
-      ClubName: this.data.club.ClubName,
-      ClubIntroduction: this.data.club.ClubIntroduction,
-      Clubuserinformation: this.data.club.ClubMember,
-      ClubCollege: this.data.club.CollegeID,
-      clubopenid:this.data.club._openid,
-    });
-    this.Get();
+    
 
   },
 
@@ -159,7 +138,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      ClubLogo: this.data.club.ClubLogo,
+      ClubName: this.data.club.ClubName,
+      ClubIntroduction: this.data.club.ClubIntroduction,
+      Clubuserinformation: this.data.club.ClubMember,
+      ClubCollege: this.data.club.CollegeID,
+      clubopenid: this.data.club._openid,
+      ClubInformations: this.data.club.ClubInformations,
+    });
+    this.Get();
   },
 
   /**

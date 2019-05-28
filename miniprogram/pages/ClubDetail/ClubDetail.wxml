@@ -13,7 +13,7 @@
 </view>
 <view class='others'>
   <text>联系方式:</text>
-  <text>{{Clubuserinformation[0][4][1]}}</text>
+  <text>{{ClubInformations}}</text>
 </view>
 <view class='others'>
   <text>所属学院：</text><text>{{ClubCollege}}</text>

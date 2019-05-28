@@ -20,7 +20,13 @@ Page({
     Club:[],
     Club_list:[],
   },
-
+  click_ToClubDetail: function (e) {
+    var id = e.currentTarget.dataset.id;
+    let club_list = JSON.stringify(this.data.Club[id])
+    wx.navigateTo({
+      url: '../ClubDetail/ClubDetail?Club=' + club_list,
+    })//点击跳转
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -67,7 +73,9 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    this.setData({
+      Club:[]
+    })
   },
 
   /**

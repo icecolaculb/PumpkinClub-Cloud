@@ -16,39 +16,58 @@ Page({
     src: '../../images/1.jpg'
   },
   btn_Join_click: function () {
-    wx.showToast({
-      title: '关注成功',
-    })
-    const db = wx.cloud.database()
-    const _ = db.command
-    let a_id = this.data.activity._id
-    let joinnumber = this.data.activity.JoinNumber+1
-    let favoriteActivity = this.data.user.FavoriteActivityID
-    let exist = false
-    for (var i in favoriteActivity){
-      if (a_id == favoriteActivity[i]){
-        exist=true
+    if (this.data.user==[]) {
+      wx.showModal({
+        title: '提醒',
+        content: '请先填写个人信息',
+        cancelText: '关闭',
+        confirmText: '前往填写',
+        success(res) {
+          if (res.confirm) {
+            let arr1 = []
+            wx.navigateTo({
+              url: '../ClubJoin/ClubJoin?arr=' + arr1,
+            })
+          }
+        }
+      })
+    }
+    else {
+      wx.showToast({
+        title: '关注成功',
+      })
+      const db = wx.cloud.database()
+      const _ = db.command
+      let a_id = this.data.activity._id
+      let joinnumber = this.data.activity.JoinNumber + 1
+      let favoriteActivity = this.data.user.FavoriteActivityID
+      let exist = false
+      for (var i in favoriteActivity) {
+        if (a_id == favoriteActivity[i]) {
+          exist = true
+        }
+      }
+      console.log(joinnumber)
+      if (exist == false) {
+        db.collection('User').doc(this.data.user._id).update({
+          data: {
+            FavoriteActivityID: _.unshift(this.data.activity._id),
+          }
+        })
+        db.collection('ActivityApply').doc(a_id).update({
+          data: {
+            JoinNumber: 5,
+          }
+        })
+      }
+      else {
+        wx.showToast({
+          title: '已关注该活动',
+        })
       }
     }
-    console.log(joinnumber)
-   if(exist==false){
-     db.collection('User').doc(this.data.user._id).update({
-       data: {
-         FavoriteActivityID: _.unshift(this.data.activity._id),
-       }
-     })
-     db.collection('ActivityApply').doc(a_id).update({
-       data: {
-         JoinNumber: 5,
-       }
-     })
-   }
-   else{
-     wx.showToast({
-       title: '已关注该活动',
-     })
-   }
   },
+
   /**
    * 生命周期函数--监听页面加载
    */

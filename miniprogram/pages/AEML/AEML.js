@@ -6,7 +6,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    _openid:'',
     clubid:'',
     user_list:[],
   },
@@ -14,10 +13,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var openid = options._openid
-    this.setData({
-      _openid: openid
-    })
+
   },
 
   /**
@@ -28,7 +24,6 @@ Page({
   },
   click_ToClubDetail: function (e) {
     var id = e.currentTarget.dataset.id;
-    let _openid=this.data._openid
     let user_list = JSON.stringify(this.data.user_list[id])
     const db=wx.cloud.database()
     db.collection('User').doc(this.data.user_list[id].Userid).get({
@@ -37,12 +32,12 @@ Page({
           clubid:res.data.FavoriteClubID
         })
         var clubID = this.data.clubid
-        clubID.push(this.data._openid)
+        clubID.push(app.OPENID)
         app.favoriteclubid=clubID
       }
     })
     wx.navigateTo({
-      url: '../AE/AE?user=' + user_list + '&_openid=' + _openid ,
+      url: '../AE/AE?user=' + user_list  ,
     })//点击跳转
     
   },
@@ -58,7 +53,7 @@ Page({
         type: "get", //指定操作是get
         db: "ClubApply", //指定操作的数据表
         condition: { // 指定查询条件
-          Clubopenid:this.data._openid,
+          Clubopenid:app.OPENID,
           exist:false
         },
         limit: 20, // 查询条数
@@ -75,7 +70,6 @@ Page({
         for (var i in list) {
           for(var index in arr){
             if ( arr[index].Userid != (list[i].Userid)){
-           
               arr.push(list[i])
            }
           }
@@ -94,7 +88,7 @@ Page({
         type: "get", //指定操作是get
         db: "ClubApply", //指定操作的数据表
         condition: { // 指定查询条件
-          Clubopenid:this.data._openid,
+          Clubopenid:app.OPENID,
           exist:false
         },
         limit: 20, // 查询条数
@@ -115,7 +109,7 @@ Page({
         type: "get", //指定操作是get
         db: "ClubApply", //指定操作的数据表
         condition: { // 指定查询条件
-          Clubopenid:this.data._openid,
+          Clubopenid:app.OPENID,
           exist:false
         },
         limit: 20, // 查询条数

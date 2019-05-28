@@ -17,22 +17,6 @@ Page({
     PMurl:'',
     mycluburl:'../MyClub/MyClub',
   },
-  // 获取用户openid
-  getOpenid() {
-    let that = this;
-    wx.cloud.callFunction({
-      name: 'getOpenID',
-      complete: res => {
-        var openid = res.result.openId;
-        that.setData({
-          openid: openid
-        })
-        this.setData({
-          PMurl: '../PM/PM?_openid=' + openid,
-        })
-      }
-    })
-  },
   onLoad: function () {
     if (!wx.cloud) {
       wx.redirectTo({
@@ -56,7 +40,6 @@ Page({
         }
       }
     })
-    this.getOpenid();
 //创建一个变量来保存页面Page示例中的this,方便后续使用
     var _this = this;
     const db = wx.cloud.database({
@@ -77,7 +60,7 @@ Page({
     
     const db = wx.cloud.database()
     db.collection('User').where({
-      _openid: this.data.openid,
+      _openid: app.OPENID,
     })
       .get({
         success: res => {

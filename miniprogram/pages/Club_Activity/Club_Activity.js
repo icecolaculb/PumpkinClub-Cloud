@@ -21,7 +21,7 @@ Page({
   onLoad: function (options) {
     var openid = options.openid
     this.setData({
-      openid:openid
+      clubopenid: openid
     })
   },
 
@@ -39,7 +39,7 @@ Page({
   onShow: function () {
     const db = wx.cloud.database()
     db.collection('ActivityApply').where({
-      Clubopenid: this.data.openid
+      Clubopenid: this.data.clubopenid
     })
       .get({
         success: res => {
