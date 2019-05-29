@@ -21,8 +21,6 @@ Page({
     ClubLogo:'',
     clubopenid:'',
     ClubInformations:'',
-    Length:'',
-    xx:[],//用户个人信息
   },
   btn_Activity_click:function(){
     var openid = this.data.clubopenid
@@ -31,15 +29,8 @@ Page({
     })
   },
   btn_Join_click: function () {
-    var xxid=this.data.xx._id
-    var memberid=this.data.club.ClubMember
-    var exist=false
-    for(var i in memberid){
-      if(memberid[i].userid==xxid){
-        exist=true
-      }
-    }
-    if (this.data.Length == 0) {
+    
+    if (this.data.xx==null) {
       wx.showModal({
         title: '提醒',
         content: '请先填写个人信息',
@@ -56,6 +47,14 @@ Page({
       })
     }
     else {
+      var xxid = this.data.xx._id
+      var memberid = this.data.club.ClubMember
+      var exist = false
+      for (var i in memberid) {
+        if (memberid[i].userid == xxid) {
+          exist = true
+        }
+      }
       if (exist == true) {
         wx.showToast({
           title: '你已加入该社团',
@@ -119,7 +118,6 @@ Page({
     }).get({
       success: res => {
         this.setData({
-          Length:res.data.length,
           xx:res.data[0]
         })
       }
@@ -144,7 +142,6 @@ Page({
       ClubIntroduction: this.data.club.ClubIntroduction,
       Clubuserinformation: this.data.club.ClubMember,
       ClubCollege: this.data.club.CollegeID,
-      clubopenid: this.data.club._openid,
       clubopenid: this.data.club._openid,
       ClubInformations: this.data.club.ClubInformations,
     });
