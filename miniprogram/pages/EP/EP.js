@@ -13,7 +13,7 @@ Page({
       mode: 'center',
       text: 'center：不缩放图片，只显示图片的中间区域',
     }],
-    src: 'cloud://testdemo-cba87d.7465-testdemo-cba87d/photo.jpg',
+    src: '../../Images/photo.jpg',
     ActivityName: '',
     ActivityStartTime: '',
     ActivityEndTime: '',
