@@ -2,13 +2,13 @@
 <view class='weui-grids'>
   <navigator url='../Activitymanage/Activitymanage' class='weui-grid' >
       <view class='weui-grid__icon'>
-        <image class='weui-grid__icon' src="../../Images/icon_tabbar.png" alt=""></image>
+        <image class='weui-grid__icon' src="cloud://testdemo-cba87d.7465-testdemo-cba87d/icon_tabbar.png" alt=""></image>
       </view>
       <p class='weui-grid__label'>活动管理</p>
   </navigator>
   <navigator url='../AEML/AEML' class='weui-grid'>
       <view class='weui-grid__icon'>
-        <image class='weui-grid__icon' src="../../Images/icon_tabbar.png" alt=""></image>
+        <image class='weui-grid__icon' src="cloud://testdemo-cba87d.7465-testdemo-cba87d/icon_tabbar.png" alt=""></image>
       </view>
       <p class="weui-grid__label">审批入社申请</p>
   </navigator>
