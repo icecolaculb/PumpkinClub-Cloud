@@ -1,4 +1,5 @@
 // miniprogram/pages/EP/EP.js
+var app=getApp()
 Page({
 
   /**
@@ -27,7 +28,7 @@ Page({
     })
   },
   gotoShow: function () {
-    var _this = this
+    let that = this
     wx.chooseImage({
       count: 9, // 最多可以选择的图片张数，默认9
       sizeType: ['compressed'], // original 原图，compressed 压缩图，默认二者都有
@@ -96,7 +97,7 @@ Page({
           ActivityStartTime: this.data.ActivityStartTime,
           ActivityEndTime: this.data.ActivityEndTime,
           ActivityIntroduction: this.data.ActivityIntroduction,
-          Clubopenid: this.data.open_id,
+          Clubopenid: app.OPENID,
           JoinNumber:0,
         }
       },
@@ -120,14 +121,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //获取用户openId
-    wx.cloud.callFunction({
-      name: 'getOpenID',
-    }).then(res => {
-      this.setData({
-        open_id: res.result.openId
-      })
-    })
+
   },
 
   /**
